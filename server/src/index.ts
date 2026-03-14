@@ -10,14 +10,20 @@ import { getPublicQuiz, getQuestionById, normalizeAnswer, SEGMENTS, QUESTIONS } 
 import { constantTimeEqualHex, hashPassword } from "./security.js";
 import { signAdminToken, verifyAdminToken } from "./admin.js";
 
+console.log("Starting server initialization...");
 const env = loadEnv(process.env);
+console.log(`Environment loaded. Port: ${env.PORT}`);
+
+console.log("Initializing database...");
 const db = new JsonDb(env.DATA_DIR);
+console.log(`Database initialized at: ${env.DATA_DIR}`);
 
 const app = express();
 app.use(express.json({ limit: "256kb" }));
 app.use(cors()); // Simplest, most permissive CORS for competition
 
 
+app.get("/", (_req, res) => res.json({ status: "alive", service: "escape-room-quiz-api" }));
 app.get("/api/health", (_req, res) => res.json({ ok: true }));
 
 app.get("/api/quiz", (_req, res) => res.json(getPublicQuiz()));
@@ -239,8 +245,9 @@ app.get("/api/admin/attempts", (req, res) => {
   return res.json({ attempts: payload });
 });
 
-app.listen(env.PORT, () => {
+const HOST = "0.0.0.0";
+app.listen(env.PORT, HOST, () => {
   // eslint-disable-next-line no-console
-  console.log(`Server listening on http://localhost:${env.PORT}`);
+  console.log(`Server listening on http://${HOST}:${env.PORT}`);
 });
 
