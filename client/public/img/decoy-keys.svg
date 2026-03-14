@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="384" viewBox="0 0 640 384">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a78bfa"/>
+      <stop offset="1" stop-color="#66f2ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="384" rx="24" fill="#0b0f17"/>
+  <g>
+    <rect x="120" y="132" width="170" height="120" rx="18" fill="rgba(0,0,0,0.18)" stroke="url(#g)" stroke-opacity="0.45"/>
+    <rect x="350" y="132" width="170" height="120" rx="18" fill="rgba(0,0,0,0.18)" stroke="url(#g)" stroke-opacity="0.45"/>
+    <text x="168" y="208" fill="#f6f7ff" fill-opacity="0.85" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="28">CTRL</text>
+    <text x="418" y="208" fill="#f6f7ff" fill-opacity="0.85" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="34">C</text>
+  </g>
+  <text x="48" y="54" fill="#f6f7ff" fill-opacity="0.7" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="18" letter-spacing="2">SHORTCUT</text>
+</svg>
+

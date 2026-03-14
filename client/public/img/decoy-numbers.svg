@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="384" viewBox="0 0 640 384">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#19f7a5"/>
+      <stop offset="1" stop-color="#66f2ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="384" rx="24" fill="#0b0f17"/>
+  <g fill="none" stroke="#92afff" stroke-opacity="0.14" stroke-width="2">
+    <path d="M88 284c70-120 130-120 200 0s130 120 200 0"/>
+    <path d="M88 100c70 120 130 120 200 0s130-120 200 0"/>
+  </g>
+  <text x="70" y="80" fill="url(#g)" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="44" letter-spacing="4">2</text>
+  <text x="295" y="220" fill="url(#g)" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="44" letter-spacing="4">3</text>
+  <text x="520" y="330" fill="url(#g)" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="44" letter-spacing="4">5</text>
+  <text x="48" y="54" fill="#f6f7ff" fill-opacity="0.7" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="18" letter-spacing="2">PRIME</text>
+</svg>
+
