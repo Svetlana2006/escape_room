@@ -12,6 +12,7 @@
     "lint": "npm -w client run lint && npm -w server run build"
   },
   "devDependencies": {
-    "concurrently": "^9.0.1"
+    "concurrently": "^9.0.1",
+    "gh-pages": "^6.3.0"
   }
 }
