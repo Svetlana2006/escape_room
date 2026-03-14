@@ -1,6 +1,6 @@
 import { readPersisted } from "./storage";
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL ?? "";
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "https://escape-room-quiz-api.onrender.com";
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(`${API_BASE}${path}`, {

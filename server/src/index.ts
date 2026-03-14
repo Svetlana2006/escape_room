@@ -15,20 +15,8 @@ const db = new JsonDb(env.DATA_DIR);
 
 const app = express();
 app.use(express.json({ limit: "256kb" }));
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin || env.CORS_ORIGIN === "*") {
-        callback(null, true);
-        return;
-      }
-      const allowed = env.CORS_ORIGIN.split(",").map((s) => s.trim().replace(/\/$/, ""));
-      const isAllowed = allowed.includes(origin.replace(/\/$/, ""));
-      callback(null, isAllowed);
-    },
-    credentials: true
-  })
-);
+app.use(cors()); // Simplest, most permissive CORS for competition
+
 
 app.get("/api/health", (_req, res) => res.json({ ok: true }));
 
