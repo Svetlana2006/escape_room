@@ -17,7 +17,15 @@ const app = express();
 app.use(express.json({ limit: "256kb" }));
 app.use(
   cors({
-    origin: env.CORS_ORIGIN ? env.CORS_ORIGIN.split(",").map((s) => s.trim()) : true,
+    origin: (origin, callback) => {
+      if (!origin || env.CORS_ORIGIN === "*") {
+        callback(null, true);
+        return;
+      }
+      const allowed = env.CORS_ORIGIN.split(",").map((s) => s.trim().replace(/\/$/, ""));
+      const isAllowed = allowed.includes(origin.replace(/\/$/, ""));
+      callback(null, isAllowed);
+    },
     credentials: true
   })
 );
