@@ -146,7 +146,7 @@ export default function QuizPage() {
     setBusyQ(questionId);
     try {
       const q = questions.find((x) => x.id === questionId)!;
-      const res = await useHint(attemptId, segmentId, questionId);
+      const res = await useHint(attemptId, segmentId!, questionId);
       setHintModal({ title: `Hint — ${q.title}`, body: res.hint });
       await refreshAttempt();
     } catch (err) {
@@ -162,7 +162,7 @@ export default function QuizPage() {
     setBusyQ(questionId);
     try {
       const raw = answers[questionId] ?? "";
-      const res = await submitAnswer(attemptId, segmentId, questionId, raw);
+      const res = await submitAnswer(attemptId, segmentId!, questionId, raw);
       setResult((p) => ({ ...p, [questionId]: res.correct ? "correct" : "wrong" }));
       await refreshAttempt();
       if (res.allCompleted) nav("/done");
