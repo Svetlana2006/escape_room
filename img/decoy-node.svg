@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="384" viewBox="0 0 640 384">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#19f7a5"/>
+      <stop offset="1" stop-color="#66f2ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="384" rx="24" fill="#0b0f17"/>
+  <path d="M320 86l170 98v196l-170 98-170-98V184z" fill="rgba(25,247,165,0.12)" stroke="url(#g)" stroke-opacity="0.55" stroke-width="3"/>
+  <text x="250" y="224" fill="#f6f7ff" fill-opacity="0.82" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="42" letter-spacing="3">NPM</text>
+  <text x="48" y="54" fill="#f6f7ff" fill-opacity="0.7" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="18" letter-spacing="2">NODE</text>
+</svg>
+
