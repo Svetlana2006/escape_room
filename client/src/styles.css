@@ -106,16 +106,16 @@ a {
 
 .stage-center .container {
   width: min(980px, 100%);
-  padding: 28px 18px 28px;
+  padding: 84px 18px 28px;
 }
 
 .stage-wide .container {
-  padding-top: 28px;
+  padding-top: 84px;
 }
 
 .container {
   max-width: 1120px;
-  padding: 28px 18px 90px;
+  padding: 84px 18px 90px;
   margin: 0 auto;
 }
 
@@ -340,7 +340,7 @@ a {
 
 .top-float {
   position: fixed;
-  top: 16px;
+  top: 20px;
   z-index: 30;
 }
 

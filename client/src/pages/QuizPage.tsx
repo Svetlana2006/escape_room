@@ -304,73 +304,72 @@ export default function QuizPage() {
               const busy = busyQ === q.id;
               const r = result[q.id];
               return (
-                <div key={q.id} className="panel-soft card">
-                  <div style={{ display: "flex", justifyContent: "space-between", gap: 10, alignItems: "start" }}>
-                    <div>
-                      <div className="brand">
-                        <span className="brand-dot" />
-                        <span style={{ color: "var(--text)" }}>{q.title}</span>
-                      </div>
-                      <div className="muted" style={{ marginTop: 10, lineHeight: 1.7 }}>
-                        {q.prompt}
-                      </div>
+                <div key={q.id} className="panel-soft" style={{ overflow: "hidden" }}>
+                  <img
+                    src={`/${q.image}`}
+                    alt=""
+                    style={{
+                      width: "100%",
+                      aspectRatio: "16 / 9",
+                      objectFit: "cover",
+                      display: "block",
+                      borderBottom: "1px solid rgba(146, 175, 255, 0.14)",
+                      opacity: 0.95
+                    }}
+                  />
+                  <div className="card">
+                    <div className="brand">
+                      <span className="brand-dot" />
+                      <span style={{ color: "var(--text)" }}>{q.title}</span>
                     </div>
-                    <img
-                      src={`/${q.image}`}
-                      alt=""
-                      style={{
-                        width: 120,
-                        height: 72,
-                        borderRadius: 14,
-                        border: "1px solid rgba(146, 175, 255, 0.14)",
-                        opacity: 0.9
-                      }}
-                    />
-                  </div>
+                    <div className="muted" style={{ marginTop: 10, lineHeight: 1.7 }}>
+                      {q.prompt}
+                    </div>
 
-                  <div style={{ marginTop: 12, display: "grid", gap: 10 }}>
-                    <LetterBoxesInput
-                      length={q.answerLength}
-                      value={current}
-                      disabled={disabled}
-                      onChange={(v) => setAnswers((p) => ({ ...p, [q.id]: normalize(v) }))}
-                    />
-                    <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                      <button
-                        className={`btn ${isCorrect ? "" : "btn-primary"}`}
-                        disabled={busy || disabled}
-                        onClick={() => onSubmitAnswer(q.id)}
-                      >
-                        {isCorrect ? "Solved" : busy ? "Checking…" : "Submit"}
-                      </button>
-                      <button
-                        className="btn"
-                        onClick={() => onHint(q.id)}
-                        disabled={busy || (remainingHints <= 0 && !hasHint)}
-                      >
-                        {hasHint ? "Hint used" : "Use hint (+1:00)"}
-                      </button>
-                      <div className="pill">
-                        <span style={{ fontFamily: "var(--mono)" }}>{isCorrect ? "UNLOCKED" : "LOCKED"}</span>
-                        <span className={isCorrect ? "good" : "muted"} style={{ fontFamily: "var(--mono)" }}>
-                          {isCorrect ? "✓" : "—"}
-                        </span>
+                    <div style={{ marginTop: 16, display: "grid", gap: 14 }}>
+                      <LetterBoxesInput
+                        length={q.answerLength}
+                        value={current}
+                        disabled={disabled}
+                        onChange={(v) => setAnswers((p) => ({ ...p, [q.id]: normalize(v) }))}
+                      />
+                      <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                        <button
+                          className={`btn ${isCorrect ? "" : "btn-primary"}`}
+                          disabled={busy || disabled}
+                          onClick={() => onSubmitAnswer(q.id)}
+                        >
+                          {isCorrect ? "Solved" : busy ? "Checking…" : "Submit"}
+                        </button>
+                        <button
+                          className="btn"
+                          onClick={() => onHint(q.id)}
+                          disabled={busy || (remainingHints <= 0 && !hasHint)}
+                        >
+                          {hasHint ? "Hint used" : "Use hint (+1:00)"}
+                        </button>
+                        <div className="pill">
+                          <span style={{ fontFamily: "var(--mono)" }}>{isCorrect ? "UNLOCKED" : "LOCKED"}</span>
+                          <span className={isCorrect ? "good" : "muted"} style={{ fontFamily: "var(--mono)" }}>
+                            {isCorrect ? "✓" : "—"}
+                          </span>
+                        </div>
                       </div>
+                      {r === "wrong" ? (
+                        <div className="bad" style={{ fontFamily: "var(--mono)", fontSize: 12 }}>
+                          Incorrect. Try again.
+                        </div>
+                      ) : r === "correct" ? (
+                        <div className="good" style={{ fontFamily: "var(--mono)", fontSize: 12 }}>
+                          Correct.
+                        </div>
+                      ) : null}
+                      {!isCorrect && a && a.normalizedAnswer ? (
+                        <div className="muted" style={{ fontFamily: "var(--mono)", fontSize: 12 }}>
+                          Last attempt recorded.
+                        </div>
+                      ) : null}
                     </div>
-                    {r === "wrong" ? (
-                      <div className="bad" style={{ fontFamily: "var(--mono)", fontSize: 12 }}>
-                        Incorrect. Try again.
-                      </div>
-                    ) : r === "correct" ? (
-                      <div className="good" style={{ fontFamily: "var(--mono)", fontSize: 12 }}>
-                        Correct.
-                      </div>
-                    ) : null}
-                    {!isCorrect && a && a.normalizedAnswer ? (
-                      <div className="muted" style={{ fontFamily: "var(--mono)", fontSize: 12 }}>
-                        Last attempt recorded.
-                      </div>
-                    ) : null}
                   </div>
                 </div>
               );
