@@ -305,9 +305,9 @@ export default function QuizPage() {
               const r = result[q.id];
               return (
                 <div key={q.id} className="panel-soft" style={{ overflow: "hidden" }}>
-                  {q.image && (
+                  {q.image && q.image.trim() !== "" && (
                     <img
-                      src={`/${q.image}`}
+                      src={q.image.startsWith("http") ? q.image : `/${q.image}`}
                       alt=""
                       style={{
                         width: "100%",
