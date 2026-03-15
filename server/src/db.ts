@@ -26,9 +26,10 @@ export type AttemptAnswer = {
 export type DbShape = {
   attempts: Record<string, Attempt>;
   answers: AttemptAnswer[];
+  quizOpen: boolean;
 };
 
-const EMPTY_DB: DbShape = { attempts: {}, answers: [] };
+const EMPTY_DB: DbShape = { attempts: {}, answers: [], quizOpen: false };
 
 export class JsonDb {
   private filePath: string;
@@ -46,8 +47,18 @@ export class JsonDb {
     const parsed = JSON.parse(raw) as DbShape;
     return {
       attempts: parsed.attempts ?? {},
-      answers: parsed.answers ?? []
+      answers: parsed.answers ?? [],
+      quizOpen: parsed.quizOpen ?? false
     };
+  }
+
+  isQuizOpen(): boolean {
+    return this.data.quizOpen;
+  }
+
+  setQuizOpen(open: boolean): void {
+    this.data.quizOpen = open;
+    this.persist();
   }
 
   private persist(): void {

@@ -16,6 +16,11 @@ export default function LoginPage() {
     setError(null);
     setBusy(true);
     try {
+      // Check quiz status first for players
+      if (email !== "svetlana.2006.kumar@gmail.com") { // Fast path if admin email is known, or just wait for server error
+        // But better to just let startAuth handle it and catch the error
+      }
+      
       const res = await startAuth(email);
       if (res.kind === "admin") {
         writePersisted({ email });

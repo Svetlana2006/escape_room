@@ -73,6 +73,10 @@ export async function adminLogin(email: string, password: string) {
   });
 }
 
+export async function getQuizStatus() {
+  return request<{ open: boolean }>("/api/quiz/status");
+}
+
 export async function getQuiz() {
   return request<PublicQuiz>("/api/quiz");
 }
@@ -134,6 +138,17 @@ export async function adminListAttempts() {
       solvedCount: number;
     }>;
   }>("/api/admin/attempts", {
+    headers: {
+      authorization: adminToken ? `Bearer ${adminToken}` : ""
+    }
+  });
+}
+
+export async function adminSetQuizStatus(open: boolean) {
+  const { adminToken } = readPersisted();
+  return request<{ open: boolean }>("/api/admin/quiz/status", {
+    method: "POST",
+    body: JSON.stringify({ open }),
     headers: {
       authorization: adminToken ? `Bearer ${adminToken}` : ""
     }

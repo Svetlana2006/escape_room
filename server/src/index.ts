@@ -26,6 +26,7 @@ app.use(cors()); // Simplest, most permissive CORS for competition
 app.get("/", (_req, res) => res.json({ status: "alive", service: "escape-room-quiz-api" }));
 app.get("/api/health", (_req, res) => res.json({ ok: true }));
 
+app.get("/api/quiz/status", (_req, res) => res.json({ open: db.isQuizOpen() }));
 app.get("/api/quiz", (_req, res) => res.json(getPublicQuiz()));
 
 app.post("/api/auth/start", (req, res) => {
@@ -34,6 +35,10 @@ app.post("/api/auth/start", (req, res) => {
 
   if (email === env.ADMIN_EMAIL.toLowerCase()) {
     return res.json({ kind: "admin", requiresPassword: true });
+  }
+
+  if (!db.isQuizOpen()) {
+    return res.status(403).json({ error: "Quiz is not open please contact admin" });
   }
 
   const attemptId = nanoid(12);
@@ -91,6 +96,9 @@ app.get("/api/attempts/:attemptId", (req, res) => {
 });
 
 app.post("/api/attempts/:attemptId/start", (req, res) => {
+  if (!db.isQuizOpen()) {
+    return res.status(403).json({ error: "Quiz is not open please contact admin" });
+  }
   const Params = z.object({ attemptId: z.string().min(1) });
   const { attemptId } = Params.parse(req.params);
   const attempt = db.getAttempt(attemptId);
@@ -243,6 +251,21 @@ app.get("/api/admin/attempts", (req, res) => {
   });
 
   return res.json({ attempts: payload });
+});
+
+app.post("/api/admin/quiz/status", (req, res) => {
+  const auth = req.header("authorization") ?? "";
+  const token = auth.startsWith("Bearer ") ? auth.slice("Bearer ".length) : "";
+  try {
+    verifyAdminToken(env, token);
+  } catch {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+
+  const Body = z.object({ open: z.boolean() });
+  const { open } = Body.parse(req.body);
+  db.setQuizOpen(open);
+  return res.json({ open: db.isQuizOpen() });
 });
 
 const HOST = "0.0.0.0";

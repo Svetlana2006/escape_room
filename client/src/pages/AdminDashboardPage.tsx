@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { adminListAttempts } from "../lib/api";
+import { adminListAttempts, adminSetQuizStatus, getQuizStatus } from "../lib/api";
 import { clearAdmin, readPersisted } from "../lib/storage";
 import { formatClock } from "../lib/time";
 import PageShell from "../components/PageShell";
@@ -14,6 +14,7 @@ export default function AdminDashboardPage() {
   const nav = useNavigate();
   const { adminToken } = useMemo(() => readPersisted(), []);
   const [error, setError] = useState<string | null>(null);
+  const [quizOpen, setQuizOpen] = useState(false);
   const [attempts, setAttempts] = useState<
     Array<{
       id: string;
@@ -36,9 +37,10 @@ export default function AdminDashboardPage() {
     let alive = true;
     async function load() {
       try {
-        const res = await adminListAttempts();
+        const [attRes, statusRes] = await Promise.all([adminListAttempts(), getQuizStatus()]);
         if (!alive) return;
-        setAttempts(res.attempts);
+        setAttempts(attRes.attempts);
+        setQuizOpen(statusRes.open);
         setError(null);
       } catch (err) {
         if (!alive) return;
@@ -53,6 +55,40 @@ export default function AdminDashboardPage() {
     };
   }, []);
 
+  async function onToggleQuiz() {
+    try {
+      const res = await adminSetQuizStatus(!quizOpen);
+      setQuizOpen(res.open);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to update quiz status");
+    }
+  }
+
+  function onExportToExcel() {
+    const headers = ["Email", "Status", "Solved", "Total Time (s)", "Penalty (s)", "Started", "Finished", "Attempt ID"];
+    const rows = attempts.map((a) => [
+      a.email,
+      a.status,
+      `${a.solvedCount}/20`,
+      a.totalSeconds ?? "—",
+      a.penaltySeconds,
+      fmt(a.startedAt),
+      fmt(a.finishedAt),
+      a.id
+    ]);
+
+    const csvContent = [headers, ...rows].map((r) => r.join(",")).join("\n");
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", `quiz_results_${new Date().toISOString().split("T")[0]}.csv`);
+    link.style.visibility = "hidden";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
   return (
     <PageShell variant="center">
       <div className="container enter">
@@ -62,6 +98,12 @@ export default function AdminDashboardPage() {
           <span>Dashboard</span>
         </div>
         <div style={{ display: "flex", gap: 10 }}>
+          <button className={`btn ${quizOpen ? "btn-danger" : "btn-primary"}`} onClick={onToggleQuiz}>
+            {quizOpen ? "Stop Quiz" : "Launch Quiz"}
+          </button>
+          <button className="btn" onClick={onExportToExcel} disabled={attempts.length === 0}>
+            Export to Excel
+          </button>
           <button
             className="btn"
             onClick={() => {
@@ -75,10 +117,21 @@ export default function AdminDashboardPage() {
       </div>
 
       <div className="panel card" style={{ marginTop: 18 }}>
-        <h1 className="h1" style={{ fontSize: 28 }}>
-          Attempts
-        </h1>
-        <p className="sub">Who logged in, how long they took (with penalties), and how many questions they solved.</p>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+          <div>
+            <h1 className="h1" style={{ fontSize: 28, margin: 0 }}>
+              Attempts
+            </h1>
+            <p className="sub">Who logged in, how long they took (with penalties), and how many questions they solved.</p>
+          </div>
+          <div className="pill">
+            <span style={{ fontFamily: "var(--mono)" }}>STATUS</span>
+            <span className={quizOpen ? "good" : "bad"} style={{ fontFamily: "var(--mono)" }}>
+              {quizOpen ? "OPEN / LIVE" : "CLOSED"}
+            </span>
+          </div>
+        </div>
+        
         {error ? (
           <div className="bad" style={{ marginTop: 12, fontFamily: "var(--mono)" }}>
             {error}
