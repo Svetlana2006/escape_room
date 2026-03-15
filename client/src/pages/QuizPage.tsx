@@ -305,18 +305,20 @@ export default function QuizPage() {
               const r = result[q.id];
               return (
                 <div key={q.id} className="panel-soft" style={{ overflow: "hidden" }}>
-                  <img
-                    src={`/${q.image}`}
-                    alt=""
-                    style={{
-                      width: "100%",
-                      aspectRatio: "16 / 9",
-                      objectFit: "cover",
-                      display: "block",
-                      borderBottom: "1px solid rgba(146, 175, 255, 0.14)",
-                      opacity: 0.95
-                    }}
-                  />
+                  {q.image && (
+                    <img
+                      src={`/${q.image}`}
+                      alt=""
+                      style={{
+                        width: "100%",
+                        aspectRatio: "16 / 9",
+                        objectFit: "cover",
+                        display: "block",
+                        borderBottom: "1px solid rgba(146, 175, 255, 0.14)",
+                        opacity: 0.95
+                      }}
+                    />
+                  )}
                   <div className="card">
                     <div className="brand">
                       <span className="brand-dot" />
