@@ -22,19 +22,19 @@ export const SEGMENTS: QuizSegment[] = [
     description: "Warm-up puzzles to calibrate your brain."
   },
   {
+    id: "logic",
+    name: "Logic",
+    description: "Patterns, deduction, and misdirection."
+  },
+  {
     id: "indian-movies",
-    name: "Indian Movies",
+    name: "Movies",
     description: "Bollywood & beyond."
   },
   {
     id: "technology",
     name: "Technology",
     description: "Code, cyberspace, and systems."
-  },
-  {
-    id: "logic",
-    name: "Logic",
-    description: "Patterns, deduction, and misdirection."
   }
 ];
 
@@ -48,51 +48,51 @@ export function normalizeAnswer(input: string): string {
 }
 
 export const QUESTIONS: QuizQuestion[] = [
-  // General (decoy)
+  // General
   q({
     id: "g1",
     segmentId: "general",
-    title: "Cipher Warm-up",
-    prompt: "Type the missing word: The quick brown ____ jumps over the lazy dog.",
-    image: "img/decoy-grid-1.svg",
-    hint: "It’s a common pangram.",
-    answer: "FOX"
+    title: "Weightless Presence",
+    prompt: "I am weightless, yet I can be felt. I have no voice, but I can keep you awake. I am the only thing that travels at the speed of light but can be stopped by a single piece of paper. If you lose me, you are in the dark; if you have too much of me, you cannot see.",
+    image: "",
+    hint: "I am the silhouette of a traveler that moves as fast as the sun, yet I am born only when your body gets in the way.",
+    answer: "Shadow"
   }),
   q({
     id: "g2",
     segmentId: "general",
-    title: "Coordinates",
-    prompt: "If NORTH=UP and EAST=RIGHT, what is the opposite of EAST?",
-    image: "img/decoy-compass.svg",
-    hint: "Think simple directions.",
-    answer: "WEST"
+    title: "Presence in Absence",
+    prompt: "The more of me there is, the less you see. I have no weight, but I can sink a ship. I can be found in a vacuum, but I cannot exist without a boundary. I am not a thing, but a lack of things.",
+    image: "",
+    hint: "I am the \"empty\" part of a needle that allows the thread to pass through.",
+    answer: "hole"
   }),
   q({
     id: "g3",
     segmentId: "general",
-    title: "Prime Time",
-    prompt: "Smallest prime number?",
-    image: "img/decoy-numbers.svg",
-    hint: "It’s even.",
-    answer: "TWO"
+    title: "Eternal Carry",
+    prompt: "I am given to you once, but you must carry me forever. I have no mass, yet I can make a person’s back bend. I am often shared, but never divided. If you drop me, I am gone forever, but I can be broken without being touched.",
+    image: "",
+    hint: "Your character",
+    answer: "Reputation"
   }),
   q({
     id: "g4",
     segmentId: "general",
-    title: "Color Code",
-    prompt: "RGB is short for Red, Green, ____.",
-    image: "img/decoy-rgb.svg",
-    hint: "Third primary light color.",
-    answer: "BLUE"
+    title: "Building by Taking",
+    prompt: "I am the only thing on Earth that is built by taking away. The harder the worker labors, the larger I grow. I have no walls, yet I can be a room; I have no roof, yet I can be a shelter. I am a void defined by what I am not.",
+    image: "",
+    hint: "A deep hole in mountain",
+    answer: "cave"
   }),
   q({
     id: "g5",
     segmentId: "general",
-    title: "Binary Door",
-    prompt: "In binary, 2 is written as?",
-    image: "img/decoy-binary.svg",
-    hint: "It’s one followed by zero.",
-    answer: "10"
+    title: "Silent Pointer",
+    prompt: "I have no voice, but I can tell you everything about yourself. I have no hands, but I can point you in the right direction. I weigh nothing, but I can make a giant sink into the earth. I am always behind you when you walk toward the light.",
+    image: "",
+    hint: "Mark left by ur shoe",
+    answer: "Footprint"
   }),
 
   // Indian Movies (decoy)
