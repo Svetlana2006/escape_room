@@ -95,51 +95,51 @@ export const QUESTIONS: QuizQuestion[] = [
     answer: "Footprint"
   }),
 
-  // Indian Movies (decoy)
+  // Indian Movies
   q({
     id: "m1",
     segmentId: "indian-movies",
-    title: "Iconic Phrase",
-    prompt: "Complete: 'Mogambo ____ hai!'",
-    image: "img/decoy-film-1.svg",
-    hint: "A famous villain is…",
-    answer: "KHUSH"
+    title: "Inspiring Legacy",
+    prompt: "After making this seriously inspiring movie, the director of the same made a comedy drama movie later on having a bunch of engineering students bringing back the nostalgia of their clg lives, not only the previously mentioned movie inspired but also removed the veil from so bad societal injustice in our country against specific humans. These emojis can tell you a lot about the movie : 🫃 + 👧 + 💇‍♀️ + 🎖️. Name the Last Name ( Surname ) associated with the movie’s original inspiration.",
+    image: "",
+    hint: "Think of the surname of the sisters who inspired the wrestling biopic.",
+    answer: "PHOGAT"
   }),
   q({
     id: "m2",
     segmentId: "indian-movies",
-    title: "Classic Duo",
-    prompt: "In 'Sholay', Jai and ____ are best friends.",
-    image: "img/decoy-film-2.svg",
-    hint: "His name starts with V.",
-    answer: "VEERU"
+    title: "The Cannes Phase",
+    prompt: "An emotion or a phase in life that we all never wanna experience voluntarily, still we all experience that in our lives. But after that phase or emotional state is over and we actually experience anything good, that makes a cherish that good time. The word for that emotion was used in a movie dialogue popularising a meme that “why doesn’t this phase end”(obvi not in this language). Sadly this movie didn’t gross a lot in india, but after getting recognised at cannes it did make some profit from overseas premiers. Still remains in heart of a niche cult audience. Guess the movie, then tell which actor made his debut through this movie.",
+    image: "",
+    hint: "The movie title translates to a state of 'Masaan' (cremation ground).",
+    answer: "VICKY KAUSHAL"
   }),
   q({
     id: "m3",
     segmentId: "indian-movies",
-    title: "Song Byte",
-    prompt: "Finish: 'All is well' was popularized by which film (one word)?",
-    image: "img/decoy-film-3.svg",
-    hint: "Aamir + engineering college.",
-    answer: "THREEIDIOTS"
+    title: "Bolly Satire",
+    prompt: "In the wold of parody or satire movie, Bollywood kind of lies behind as compared to other movie industries, But with this movie we actually showed our guts like even till now stand up comics hold them back before making a joke regarding this unfortunate incident even but this indian movie didn’t hold back not only they did satire the whole incident but also shed light on a conspiracy against american government that no one was talking about. These emojis can tell you everything about the movie if you are actually a BollyGeek since 2010s : ✈️🏢🏢. Think of the movie and guess the lead actor, not only he was famous in india for acting but for his songs too, one of his such song by coke studios blew up in india largely in 2010s, tell the song name.",
+    image: "",
+    hint: "This Pakistani actor/singer appeared in 'Tere Bin Laden'. His Coke Studio hit is also the name of a character in a movie.",
+    answer: "ROCKSTAR"
   }),
   q({
     id: "m4",
     segmentId: "indian-movies",
-    title: "Space",
-    prompt: "India’s first space film: 'Mission ____'.",
-    image: "img/decoy-film-4.svg",
-    hint: "It’s a planet.",
-    answer: "MANGAL"
+    title: "Gore & Spirituality",
+    prompt: "This movie came from a director ,who mentions danny boyle as an inspiration for his direction style, the movie revolves around a character who initially was an honest, humble and poor but later his generations become a known name in gangsta business for revenge. This movie actually started the gore action in indian films which was considered a taboo till then and with this movie giving in india such action kept leading other directors to show even more gore action scenes leading to movies like - animal and toxic. This movie also has a dedicated cult fanbase but not niche at all. Coming back to the director, director comes from a city well known for it’s spirituality reasons. Tell the name of that city. ( Hint : someone famous as vin diesel of india is also associated with this city. )",
+    image: "",
+    hint: "A city in Uttar Pradesh near the Nepal border, birthplace of Anurag Kashyap.",
+    answer: "GORAKHPUR"
   }),
   q({
     id: "m5",
     segmentId: "indian-movies",
-    title: "Superstar",
-    prompt: "A common nickname for Shah Rukh Khan (3 letters).",
-    image: "img/decoy-film-5.svg",
-    hint: "Initials.",
-    answer: "SRK"
+    title: "Bridge to Reality",
+    prompt: "This movie stars an actor who was well known for successfully bridging bollywood and hollywood in late 2000s. A funny movie wrapping up the dark and sad truths about life, connecting an IT employee with the harsh life and society. What starts with a sad death turns into something funny but still forces us to ponder upon a lot of things we’ve been learning since childhood and questioning are societal teachings and morals. Not only this movie tells us a lot about self discovery but also became a memorable work for the late actor we mentioned in the beginning. But other than that it also was a debut movie for one other actor who has been able to make a name for himself now till 2026, Name that debut actor in this movie.",
+    image: "",
+    hint: "The late actor is Irrfan Khan. The debutant is a superstar from the Malayalam industry.",
+    answer: "DULQUER SALMAAN"
   }),
 
   // Technology (decoy)
