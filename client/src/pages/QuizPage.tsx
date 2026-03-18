@@ -116,7 +116,11 @@ export default function QuizPage() {
   }
 
   const currentSegment = quiz.segments.find((s) => s.id === segmentId)!;
-  const questions = quiz.questions.filter((qq) => qq.segmentId === segmentId);
+  let questions = quiz.questions.filter((qq) => qq.segmentId === segmentId);
+  const assignedIds = state.attempt.assignedQuestions?.[segmentId];
+  if (assignedIds) {
+    questions = questions.filter(qq => assignedIds.includes(qq.id));
+  }
   const answerMap = new Map(state.answers.map((a) => [a.questionId, a]));
   const solvedInSegment = state.solvedBySegment[segmentId] ?? 0;
   const hintsUsedInSegment = state.answers.filter((a) => a.segmentId === segmentId && a.hintUsed).length;

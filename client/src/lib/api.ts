@@ -40,6 +40,7 @@ export type Attempt = {
   finishedAt?: number;
   status: "created" | "in_progress" | "completed" | "abandoned";
   penaltySeconds: number;
+  assignedQuestions?: Record<string, string[]>;
 };
 
 export type AttemptAnswer = {
