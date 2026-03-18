@@ -5,7 +5,7 @@ import { nanoid } from "nanoid";
 import { z } from "zod";
 
 import { loadEnv } from "./env.js";
-import { JsonDb } from "./db.js";
+import { Attempt, JsonDb } from "./db.js";
 import { getPublicQuiz, getQuestionById, normalizeAnswer, SEGMENTS, QUESTIONS } from "./quiz.js";
 import { constantTimeEqualHex, hashPassword } from "./security.js";
 import { signAdminToken, verifyAdminToken } from "./admin.js";
@@ -21,6 +21,15 @@ console.log(`Database initialized at: ${env.DATA_DIR}`);
 const app = express();
 app.use(express.json({ limit: "256kb" }));
 app.use(cors()); // Simplest, most permissive CORS for competition
+
+function getSegmentQuestions(attempt: Attempt, segmentId: string) {
+  let qs = QUESTIONS.filter((qq) => qq.segmentId === segmentId);
+  const assignedIds = attempt.assignedQuestions?.[segmentId];
+  if (assignedIds) {
+    qs = qs.filter((qq) => assignedIds.includes(qq.id));
+  }
+  return qs;
+}
 
 
 app.get("/", (_req, res) => res.json({ status: "alive", service: "escape-room-quiz-api" }));
@@ -41,6 +50,13 @@ app.post("/api/auth/start", (req, res) => {
     return res.status(403).json({ error: "Quiz is not open please contact admin" });
   }
 
+  const generalQuestions = QUESTIONS.filter(q => q.segmentId === "general").map(q => q.id);
+  for (let i = generalQuestions.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [generalQuestions[i], generalQuestions[j]] = [generalQuestions[j], generalQuestions[i]];
+  }
+  const assignedGeneral = generalQuestions.slice(0, 5);
+
   const attemptId = nanoid(12);
   const now = Date.now();
   db.upsertAttempt({
@@ -48,7 +64,10 @@ app.post("/api/auth/start", (req, res) => {
     email,
     createdAt: now,
     status: "created",
-    penaltySeconds: 0
+    penaltySeconds: 0,
+    assignedQuestions: {
+      "general": assignedGeneral
+    }
   });
   return res.json({ kind: "player", attemptId });
 });
@@ -81,10 +100,13 @@ app.get("/api/attempts/:attemptId", (req, res) => {
 
   const solvedQuestionIds = new Set(answers.filter((a) => a.correct).map((a) => a.questionId));
   const solvedBySegment = Object.fromEntries(
-    SEGMENTS.map((s) => [
-      s.id,
-      QUESTIONS.filter((qq) => qq.segmentId === s.id).filter((qq) => solvedQuestionIds.has(qq.id)).length
-    ])
+    SEGMENTS.map((s) => {
+      const qs = getSegmentQuestions(attempt, s.id);
+      return [
+        s.id,
+        qs.filter((qq) => solvedQuestionIds.has(qq.id)).length
+      ];
+    })
   );
 
   return res.json({
@@ -178,12 +200,12 @@ app.post("/api/attempts/:attemptId/answer", (req, res) => {
 
   const answers = db.getAnswersForAttempt(attemptId);
   const solvedQuestionIds = new Set(answers.filter((a) => a.correct).map((a) => a.questionId));
-  const segmentQuestions = QUESTIONS.filter((qq) => qq.segmentId === segmentId);
+  const segmentQuestions = getSegmentQuestions(attempt, segmentId);
   const segmentSolved = segmentQuestions.filter((qq) => solvedQuestionIds.has(qq.id)).length;
   const segmentCompleted = segmentSolved === segmentQuestions.length;
 
   const allCompleted = SEGMENTS.every((s) => {
-    const qs = QUESTIONS.filter((qq) => qq.segmentId === s.id);
+    const qs = getSegmentQuestions(attempt, s.id);
     const solved = qs.filter((qq) => solvedQuestionIds.has(qq.id)).length;
     return solved === qs.length;
   });

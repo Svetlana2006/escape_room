@@ -11,6 +11,7 @@ export type Attempt = {
   finishedAt?: number;
   status: AttemptStatus;
   penaltySeconds: number;
+  assignedQuestions?: Record<string, string[]>;
 };
 
 export type AttemptAnswer = {

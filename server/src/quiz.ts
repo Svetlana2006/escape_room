@@ -48,7 +48,7 @@ export function normalizeAnswer(input: string): string {
 }
 
 export const QUESTIONS: QuizQuestion[] = [
-  // General
+  // General - 10 questions for random pool
   q({
     id: "g1",
     segmentId: "general",
@@ -93,6 +93,51 @@ export const QUESTIONS: QuizQuestion[] = [
     image: "",
     hint: "Mark left by ur shoe",
     answer: "Footprint"
+  }),
+  q({
+    id: "g6",
+    segmentId: "general",
+    title: "Light as a Feather",
+    prompt: "I am as light as a feather, yet the strongest man on Earth cannot hold me for more than a few minutes. I cost nothing to start, but everything to lose. I am not a liquid, but I can \"fail\" if you are under pressure.",
+    image: "",
+    hint: "You do it about 20,000 times a day without even thinking.",
+    answer: "Breath"
+  }),
+  q({
+    id: "g7",
+    segmentId: "general",
+    title: "Billions of Eyes",
+    prompt: "I have billions of eyes but cannot see. I have millions of ears but cannot hear. I fall from the sky without a parachute, and I dance without any feet. I can cover the world in white, but I turn to tears the moment you try to keep me.",
+    image: "",
+    hint: "I am the only thing you can use to build a man that melts.",
+    answer: "snow"
+  }),
+  q({
+    id: "g8",
+    segmentId: "general",
+    title: "Invisible Bridge",
+    prompt: "I am a bridge that connects two people but touches only one. I can be bought, but I cannot be sold. I am a circle that has no beginning or end, yet I am often broken by a single word.",
+    image: "",
+    hint: "I am made of words, but I am broken by actions.",
+    answer: "promise"
+  }),
+  q({
+    id: "g9",
+    segmentId: "general",
+    title: "Silent Spectacle",
+    prompt: "I have millions of stories but not a single book. I have thousands of years of history, but I have never attended a day of school. I can show you the stars in the middle of the day and bring the dead back to life for a few hours. I am a place where you sit in the dark to see the light, and although I am filled with people, everyone remains silent until the very end.",
+    image: "",
+    hint: "It’s the only place where you pay to watch someone else's dreams in the dark.",
+    answer: "theater"
+  }),
+  q({
+    id: "g10",
+    segmentId: "general",
+    title: "Silver Armor",
+    prompt: "I have silver armor but no knight, and I’m full of bubbles but never soap. I have all the bite of my famous brother, but none of his weight. I’m the choice of the restless worker and the late-night scholar who wants the kick without the cost.",
+    image: "",
+    hint: "I’m a \"lighter\" version of a classic, and I’m famously associated with a silver can.",
+    answer: "Diet coke"
   }),
 
   // Indian Movies
