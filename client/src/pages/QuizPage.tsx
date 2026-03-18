@@ -202,7 +202,15 @@ export default function QuizPage() {
           penaltySeconds={state.attempt.penaltySeconds}
         />
 
-      <div className="bottom-right">
+      <div className="bottom-right" style={{ display: "flex", gap: "10px" }}>
+        <button
+          className="btn btn-primary"
+          disabled={!segmentComplete(solvedInSegment) || !nextSegment}
+          onClick={() => nextSegment && nav(`/quiz/${nextSegment.id}`)}
+          title={!segmentComplete(solvedInSegment) ? "Solve all 5 questions to unlock next segment" : "Go next"}
+        >
+          {nextSegment ? "Next segment" : "Final segment"}
+        </button>
         <button className="btn btn-danger" onClick={() => setConfirmSubmit(true)} disabled={busyQ === "finish"}>
           Submit Quiz
         </button>
@@ -383,6 +391,7 @@ export default function QuizPage() {
           </div>
         </div>
       </div>
+      </div>
 
       {hintModal ? (
         <Modal
@@ -427,7 +436,6 @@ export default function QuizPage() {
           </div>
         </Modal>
       ) : null}
-      </div>
     </PageShell>
   );
 }

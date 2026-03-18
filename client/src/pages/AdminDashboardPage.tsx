@@ -65,19 +65,27 @@ export default function AdminDashboardPage() {
   }
 
   function onExportToExcel() {
-    const headers = ["Email", "Status", "Solved", "Total Time (s)", "Penalty (s)", "Started", "Finished", "Attempt ID"];
+    const headers = ["Email", "Status", "Solved Count", "Total Time (s)", "Penalty (s)", "Started", "Finished", "Attempt ID"];
+    
+    const escapeCsv = (val: any) => {
+      if (val === null || val === undefined) return '""';
+      const str = String(val).replace(/"/g, '""');
+      // If we just wrap everything in quotes, commas inside fields won't break columns
+      return `"${str}"`;
+    };
+
     const rows = attempts.map((a) => [
       a.email,
       a.status,
-      `${a.solvedCount}/20`,
+      a.solvedCount, // Export as integer to prevent Excel from converting fractions like '5/20' to 'May-20'
       a.totalSeconds ?? "—",
       a.penaltySeconds,
       fmt(a.startedAt),
       fmt(a.finishedAt),
       a.id
-    ]);
+    ].map(escapeCsv));
 
-    const csvContent = [headers, ...rows].map((r) => r.join(",")).join("\n");
+    const csvContent = [headers.map(escapeCsv), ...rows].map((r) => r.join(",")).join("\n");
     const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
