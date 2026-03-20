@@ -6,7 +6,7 @@ import { z } from "zod";
 
 import { loadEnv } from "./env.js";
 import { Attempt, JsonDb } from "./db.js";
-import { getPublicQuiz, getQuestionById, normalizeAnswer, SEGMENTS, QUESTIONS } from "./quiz.js";
+import { getPublicQuiz, getQuestionById, normalizeAnswer, RANDOM_SEGMENT_SIZES, SEGMENTS, QUESTIONS } from "./quiz.js";
 import { constantTimeEqualHex, hashPassword } from "./security.js";
 import { signAdminToken, verifyAdminToken } from "./admin.js";
 
@@ -31,6 +31,15 @@ function getSegmentQuestions(attempt: Attempt, segmentId: string) {
   return qs;
 }
 
+function shuffle<T>(items: T[]): T[] {
+  const copy = [...items];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
 
 app.get("/", (_req, res) => res.json({ status: "alive", service: "escape-room-quiz-api" }));
 app.get("/api/health", (_req, res) => res.json({ ok: true }));
@@ -50,12 +59,12 @@ app.post("/api/auth/start", (req, res) => {
     return res.status(403).json({ error: "Quiz is not open please contact admin" });
   }
 
-  const generalQuestions = QUESTIONS.filter(q => q.segmentId === "general").map(q => q.id);
-  for (let i = generalQuestions.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [generalQuestions[i], generalQuestions[j]] = [generalQuestions[j], generalQuestions[i]];
-  }
-  const assignedGeneral = generalQuestions.slice(0, 5);
+  const assignedQuestions = Object.fromEntries(
+    Object.entries(RANDOM_SEGMENT_SIZES).map(([segmentId, count]) => {
+      const questionIds = QUESTIONS.filter((q) => q.segmentId === segmentId).map((q) => q.id);
+      return [segmentId, shuffle(questionIds).slice(0, count)];
+    })
+  );
 
   const attemptId = nanoid(12);
   const now = Date.now();
@@ -65,9 +74,7 @@ app.post("/api/auth/start", (req, res) => {
     createdAt: now,
     status: "created",
     penaltySeconds: 0,
-    assignedQuestions: {
-      "general": assignedGeneral
-    }
+    assignedQuestions
   });
   return res.json({ kind: "player", attemptId });
 });
@@ -295,4 +302,3 @@ app.listen(env.PORT, HOST, () => {
   // eslint-disable-next-line no-console
   console.log(`Server listening on http://${HOST}:${env.PORT}`);
 });
-

@@ -38,6 +38,11 @@ export const SEGMENTS: QuizSegment[] = [
   }
 ];
 
+export const RANDOM_SEGMENT_SIZES: Record<string, number> = {
+  general: 5,
+  "indian-movies": 5
+};
+
 const q = (question: Omit<QuizQuestion, "answerLength">): QuizQuestion => ({
   ...question,
   answerLength: normalizeAnswer(question.answer).length
@@ -186,6 +191,51 @@ export const QUESTIONS: QuizQuestion[] = [
     hint: "The late actor is Irrfan Khan. The debutant is a superstar from the Malayalam industry.",
     answer: "DULQUER SALMAAN"
   }),
+  q({
+    id: "m6",
+    segmentId: "indian-movies",
+    title: "Go Goa Gone",
+    prompt: "This movie flopped on box office but with time people especially the youth of india started to like this movie eventually. It stars a famous actor X, one other actor Y in this movie is married to the sister of X in real life, another actor is a stand up comedian who came into controversy during lockdown period for mocking india’s behaviour on women and duality of indian society. This movie was first indian movie of it’s genre, the genre was a combination of 2 genres, after this some other movies were also made in this genre and got love from people. These emojis are enough hints for you to guess: car + island + party + zombie. Now tell the name of the sister of X who is married to Y, she also did a cameo in the movie for a couple of minutes.",
+    image: "",
+    hint: "X is Saif Ali Khan, and Y is Kunal Khemu.",
+    answer: "SOHA ALI KHAN"
+  }),
+  q({
+    id: "m7",
+    segmentId: "indian-movies",
+    title: "Bunny to Brahmastra",
+    prompt: "This movie is definitely in top 5 movies list of almost every 2010s kid, it introduced us to a character which inspired literally almost all of us to travel and explore the world. Hint: open eyes plus bunny. The director of this movie also directed one of the most expensive and VFX heavy movies in india around early 2020s. That later movie became profitable only after selling rights and everything, but on box office it was not able to recover its budget and got mixed reviews. Hint: fire plus trident. Tell the name of this director.",
+    image: "",
+    hint: "Think 'Yeh Jawaani Hai Deewani' and 'Brahmastra'.",
+    answer: "AYAN MUKERJI"
+  }),
+  q({
+    id: "m8",
+    segmentId: "indian-movies",
+    title: "Super Chor",
+    prompt: "A 2000s movie inspired from a real life super chor gave us a social commentary on how a kid’s upbringing, traumas and little incidents can shape him as a human in future. On one side where in india we believe parents are a form of god, this film also shows that they are also humans who make mistakes and sometimes mess up their kids upbringing. The phrase super chor is enough to guess the movie if you have seen good 2000s films. The lead actor is often known for complex and offbeat roles. Tell the name of the lead character.",
+    image: "",
+    hint: "The film is 'Oye Lucky! Lucky Oye!'.",
+    answer: "LUCKY"
+  }),
+  q({
+    id: "m9",
+    segmentId: "indian-movies",
+    title: "Resistance in Red",
+    prompt: "A movie released in mid 2010s drew attention towards how gender equality is the need of the hour in our country. It received backlash from so called men’s rights activists, and even the censor board made many cuts that the director opposed because those scenes were imagery of the society we live in. When premiered overseas without cuts, it got recognition for the issue it raised and won two major film awards. The storyline revolved around resistance against patriarchal norms, female desire and autonomy. Name the movie. Little hint: lipstick.",
+    image: "",
+    hint: "The title includes both a cosmetic item and a garment associated with modesty.",
+    answer: "LIPSTICK UNDER MY BURKHA"
+  }),
+  q({
+    id: "m10",
+    segmentId: "indian-movies",
+    title: "Silent Franchise",
+    prompt: "This mid 2000s cult classic comedy birthed one of Bollywood's longest-running franchises. It revolves around four useless college-expelled friends who con their way into a bungalow by pretending to be related to the owners. One of the most iconic characters in the group cannot speak and communicates entirely in hilarious high-pitched grunts. Hint: speaking plus silent, blind man plus old woman. The director later became synonymous with defying gravity and blowing up SUVs, creating India's biggest cop action stunts. Hint: police car plus explosion plus lion. Tell the name of this comedy movie.",
+    image: "",
+    hint: "Directed by Rohit Shetty before the cop-universe era.",
+    answer: "GOLMAAL"
+  }),
 
   // Technology (decoy)
   q({
@@ -301,4 +351,3 @@ export function getPublicQuiz(): PublicQuiz {
 export function getQuestionById(questionId: string): QuizQuestion | undefined {
   return QUESTIONS.find((qq) => qq.id === questionId);
 }
-
