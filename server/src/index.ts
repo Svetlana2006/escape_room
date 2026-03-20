@@ -148,6 +148,7 @@ app.post("/api/attempts/:attemptId/hint", (req, res) => {
   const attempt = db.getAttempt(attemptId);
   if (!attempt) return res.status(404).json({ error: "Attempt not found" });
   if (!attempt.startedAt) return res.status(409).json({ error: "Quiz not started" });
+  if (segmentId === "logic") return res.status(409).json({ error: "Hints are disabled for the Logic segment" });
 
   const question = getQuestionById(questionId);
   if (!question || question.segmentId !== segmentId) return res.status(404).json({ error: "Question not found" });

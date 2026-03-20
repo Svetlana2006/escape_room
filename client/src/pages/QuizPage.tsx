@@ -30,6 +30,7 @@ export default function QuizPage() {
   const [result, setResult] = useState<Record<string, "correct" | "wrong" | undefined>>({});
   const [hintModal, setHintModal] = useState<{ title: string; body: string } | null>(null);
   const [confirmSubmit, setConfirmSubmit] = useState(false);
+  const [logicDisclaimerOpen, setLogicDisclaimerOpen] = useState(false);
 
   useEffect(() => {
     if (!attemptId) nav("/");
@@ -85,6 +86,10 @@ export default function QuizPage() {
   }, [quiz, state, nav]);
 
   useEffect(() => {
+    setLogicDisclaimerOpen(segmentId === "logic");
+  }, [segmentId]);
+
+  useEffect(() => {
     if (!attemptId) return;
     if (!state) return;
     if (state.attempt.startedAt) return;
@@ -123,6 +128,7 @@ export default function QuizPage() {
   }
   const answerMap = new Map(state.answers.map((a) => [a.questionId, a]));
   const solvedInSegment = state.solvedBySegment[segmentId] ?? 0;
+  const hintsDisabled = segmentId === "logic";
   const hintsUsedInSegment = state.answers.filter((a) => a.segmentId === segmentId && a.hintUsed).length;
   const remainingHints = Math.max(0, 2 - hintsUsedInSegment);
 
@@ -146,6 +152,7 @@ export default function QuizPage() {
 
   async function onHint(questionId: string) {
     if (!attemptId) return;
+    if (hintsDisabled) return;
     setError(null);
     setBusyQ(questionId);
     try {
@@ -216,16 +223,16 @@ export default function QuizPage() {
         </button>
       </div>
 
-      <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "center" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "center" }}>
         <div className="brand">
           <span className="brand-dot" />
           <span>Segment</span>
           <span style={{ color: "var(--text)" }}>{currentSegment.name}</span>
         </div>
-        <div className="pill" title="Hints used in this segment">
+        <div className="pill" title={hintsDisabled ? "Hints are disabled in this segment" : "Hints used in this segment"}>
           <span style={{ fontFamily: "var(--mono)" }}>HINTS</span>
           <span style={{ fontFamily: "var(--mono)" }}>
-            {hintsUsedInSegment}/2 ({remainingHints} left)
+            {hintsDisabled ? "DISABLED" : `${hintsUsedInSegment}/2 (${remainingHints} left)`}
           </span>
         </div>
       </div>
@@ -295,7 +302,9 @@ export default function QuizPage() {
             <div>
               <h2 style={{ margin: 0, fontFamily: "var(--mono)" }}>{currentSegment.name}</h2>
               <p className="sub" style={{ marginTop: 6 }}>
-                Solve all 5 to proceed. You can answer in any order.
+                {hintsDisabled
+                  ? "Solve all 5 to finish. No hints will be provided here."
+                  : "Solve all 5 to proceed. You can answer in any order."}
               </p>
             </div>
             <div className="pill">
@@ -358,9 +367,9 @@ export default function QuizPage() {
                         <button
                           className="btn"
                           onClick={() => onHint(q.id)}
-                          disabled={busy || (remainingHints <= 0 && !hasHint)}
+                          disabled={hintsDisabled || busy || (remainingHints <= 0 && !hasHint)}
                         >
-                          {hasHint ? "Hint used" : "Use hint (+1:00)"}
+                          {hintsDisabled ? "Hints disabled" : hasHint ? "Hint used" : "Use hint (+1:00)"}
                         </button>
                         <div className="pill">
                           <span style={{ fontFamily: "var(--mono)" }}>{isCorrect ? "UNLOCKED" : "LOCKED"}</span>
@@ -409,6 +418,24 @@ export default function QuizPage() {
             </div>
             <div className="muted" style={{ marginTop: 12, fontFamily: "var(--mono)", fontSize: 12 }}>
               Penalty applied: <span className="warn">+1:00</span> (only 2 hints per segment)
+            </div>
+          </div>
+        </Modal>
+      ) : null}
+
+      {logicDisclaimerOpen ? (
+        <Modal
+          title="Logic Segment Protocol"
+          onClose={() => setLogicDisclaimerOpen(false)}
+          footer={
+            <button className="btn btn-primary" onClick={() => setLogicDisclaimerOpen(false)}>
+              Enter Logic
+            </button>
+          }
+        >
+          <div className="panel-soft card">
+            <div className="muted" style={{ lineHeight: 1.75 }}>
+              No hints will be provided in the Logic segment. This is a battle you have to fight on your own.
             </div>
           </div>
         </Modal>

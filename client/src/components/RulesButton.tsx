@@ -23,6 +23,7 @@ export default function RulesButton() {
                 penalty each.
               </li>
               <li>Only 2 hints are allowed per segment.</li>
+              <li>The Logic segment is the final segment and provides no hints at all.</li>
               <li>Answers are typed into letter boxes (1 character per box). Spaces/punctuation are ignored.</li>
               <li>
                 Use <span className="kbd">Submit Quiz</span> to leave early. Your progress and time will be recorded.
@@ -34,4 +35,3 @@ export default function RulesButton() {
     </>
   );
 }
-

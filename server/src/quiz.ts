@@ -22,11 +22,6 @@ export const SEGMENTS: QuizSegment[] = [
     description: "Warm-up puzzles to calibrate your brain."
   },
   {
-    id: "logic",
-    name: "Logic",
-    description: "Patterns, deduction, and misdirection."
-  },
-  {
     id: "indian-movies",
     name: "Movies",
     description: "Bollywood & beyond."
@@ -35,12 +30,18 @@ export const SEGMENTS: QuizSegment[] = [
     id: "technology",
     name: "Technology",
     description: "Code, cyberspace, and systems."
+  },
+  {
+    id: "logic",
+    name: "Logic",
+    description: "Patterns, deduction, and misdirection."
   }
 ];
 
 export const RANDOM_SEGMENT_SIZES: Record<string, number> = {
   general: 5,
-  "indian-movies": 5
+  "indian-movies": 5,
+  logic: 5
 };
 
 const q = (question: Omit<QuizQuestion, "answerLength">): QuizQuestion => ({
@@ -284,51 +285,78 @@ export const QUESTIONS: QuizQuestion[] = [
     answer: "LOCAL"
   }),
 
-  // Logic (decoy)
+  // Logic - 8 questions for random pool
   q({
     id: "l1",
     segmentId: "logic",
-    title: "Sequence",
-    prompt: "2, 4, 8, 16, ____ (two digits).",
-    image: "img/decoy-seq.svg",
-    hint: "Multiply by 2.",
-    answer: "32"
+    title: "The Turtle Owner",
+    prompt: "Five houses stand in a row from left to right numbered 1 to 5. Each house has a unique color, nationality, drink, pet, and musical instrument. Colors are Red, Blue, Green, Yellow, White. Nationalities are Indian, Japanese, German, Brazilian, Norwegian. Drinks are Tea, Coffee, Milk, Juice, Water. Pets are Dog, Cat, Parrot, Rabbit, Turtle. Instruments are Piano, Violin, Guitar, Drums, Flute. Clues: The Norwegian lives in the first house. The green house is immediately to the right of the white house. The person who drinks coffee lives in the green house. The German plays the piano. The yellow house resident plays the drums. The Brazilian keeps a dog. The center house drinks milk. The violin player lives next to the cat owner. The Japanese plays the flute. The blue house is next to the Norwegian. The guitar player drinks juice. The rabbit owner lives next to the drum player. The parrot owner drinks tea. The Brazilian lives next to the rabbit owner. The water drinker lives next to the flute player. The cat owner lives in the red house. The violin player lives in the white house. The Indian lives somewhere to the right of the red house. Who owns the turtle?",
+    image: "",
+    hint: "No hints in the Logic segment.",
+    answer: "GERMAN"
   }),
   q({
     id: "l2",
     segmentId: "logic",
-    title: "Truth",
-    prompt: "Opposite of TRUE (one word).",
-    image: "img/decoy-truth.svg",
-    hint: "Boolean.",
-    answer: "FALSE"
+    title: "How Many Didn't",
+    prompt: "A farmer writes in his logbook: On the farm there are 30 cows. 28 chickens. Later he asks, if there are 30 cows on the farm and 28 chickens, how many didn't? How many did not?",
+    image: "",
+    hint: "No hints in the Logic segment.",
+    answer: "10"
   }),
   q({
     id: "l3",
     segmentId: "logic",
-    title: "Riddle",
-    prompt: "What has keys but can't open locks? (one word).",
-    image: "img/decoy-keys-2.svg",
-    hint: "It makes music.",
-    answer: "PIANO"
+    title: "Sector-7 Assignment",
+    prompt: "Three operatives were detained at Sector-7: Agent Orion, Agent Vega, and Agent Nova. Each was stationed at exactly one facility: Area 51 Research Base, Hawkins National Laboratory, or Black Mesa Containment Facility. One always tells the truth, one always lies, and one alternates between truth and lies in any order. Orion said: I am stationed at Area 51. Agent Vega is stationed at Hawkins Laboratory. Vega said: I am stationed at Area 51. Agent Nova is stationed at Black Mesa. Nova said: Agent Orion is stationed at Hawkins Laboratory. Agent Vega is stationed at Area 51. Which agent must be stationed at the Black Mesa Containment Facility?",
+    image: "",
+    hint: "No hints in the Logic segment.",
+    answer: "NOVA"
   }),
   q({
     id: "l4",
     segmentId: "logic",
-    title: "Mirror",
-    prompt: "Write the same forward and backward: 'LEVEL' is a ____.",
-    image: "img/decoy-mirror.svg",
-    hint: "Palindrome.",
-    answer: "PALINDROME"
+    title: "Strikers and Defenders",
+    prompt: "An eccentric football analyst assigns distances to club names. He says there are five striker letters, and each striker adds half a millennium, while every other letter subtracts two centuries. His examples are: CHELSEA equals 700 km away, ARSENAL equals 700 km away, BARCELONA equals 1000 km away, and WOLVES equals 200 km away. Using the same rule, how far away should REALMADRID be from Manchester United?",
+    image: "",
+    hint: "No hints in the Logic segment.",
+    answer: "800KM"
   }),
   q({
     id: "l5",
     segmentId: "logic",
-    title: "Last Lock",
-    prompt: "If you have 1 byte, how many bits is that? (one digit).",
-    image: "img/decoy-byte.svg",
-    hint: "Classic conversion.",
-    answer: "8"
+    title: "Where Is Smirnoff",
+    prompt: "Dustin maps movements around Starcourt Mall with the entrance as the center. Eleven moves four blocks north, three east, two south, and one west. Mike moves two west, five north, three east, and one south. Will moves three south, four east, and two north. Alexei Smirnoff moves one north, two east, one south, and one east. Hopper moves six south, two west, one north, and one east. Dustin moves three east, two north, one west, and one south. Final question: Where is Smirnoff now?",
+    image: "",
+    hint: "No hints in the Logic segment.",
+    answer: "DEAD"
+  }),
+  q({
+    id: "l6",
+    segmentId: "logic",
+    title: "Observatory Murder",
+    prompt: "At 9:40 PM, Dr. Mehta was found dead inside the observatory control room. Five researchers remained: Aarav, Sofia, Lukas, Mei, and Daniel. Each had a unique location, item, motive, and hallway sighting time. Locations: Telescope Dome, Data Lab, Archive Room, Control Room Corridor, Equipment Storage. Items: Notebook, Keycard, Flash Drive, Gloves, Laser Pointer. Motives: Funding dispute, Telescope access request, Data authorship conflict, Equipment damage report, Internship recommendation. Times: 9:00 PM, 9:10 PM, 9:15 PM, 9:25 PM, 9:35 PM. Clues: The person seen at 9:00 PM came from the Archive Room. Mei was seen later than Lukas. The Flash Drive carrier appeared immediately before the person from Equipment Storage. The Notebook owner had requested the internship recommendation. The person from the Telescope Dome appeared sometime after Aarav. Sofia was not seen at 9:15 PM. The Gloves carrier was seen exactly 10 minutes after the person from the Data Lab. The Keycard owner appeared earlier than Daniel. The Equipment damage report belonged to the person from Equipment Storage. Lukas did not carry the Flash Drive. The person seen at 9:35 PM had been in the Control Room Corridor. The Flash Drive carrier had the data authorship conflict with Dr. Mehta. The person seen at 9:25 PM had come from the Telescope Dome. Aarav was not in the Archive Room. The funding dispute belonged to Daniel. The Flash Drive carrier was seen later than Sofia. Aarav was seen at 9:10 PM. Critical evidence: inside the control room investigators found a dropped Flash Drive, and the Flash Drive carrier must have entered the control room before leaving the building. Who is the murderer?",
+    image: "",
+    hint: "No hints in the Logic segment.",
+    answer: "MEI"
+  }),
+  q({
+    id: "l7",
+    segmentId: "logic",
+    title: "Keypad Code",
+    prompt: "A secure laboratory door uses a 5-digit keypad. Each digit is distinct. Failed attempts show: 91347 has two digits correct but both in wrong positions. 48215 has one digit correct and in the correct position. 76024 has two digits correct, one in the right place. 41890 has none of the digits in the code. 50731 has three digits correct but all in wrong positions. All feedback is exact. What is the 5-digit access code?",
+    image: "",
+    hint: "No hints in the Logic segment.",
+    answer: "73142"
+  }),
+  q({
+    id: "l8",
+    segmentId: "logic",
+    title: "Thinking Machine",
+    prompt: "In the hall of letters there should be twenty-six seats, yet tonight one chair sits empty. The guard of the gate, shaped like a hammer, never arrived, so the hall closed with only twenty-five inside. Find the square where the alphabet gathers in rows and columns, and follow these footsteps: 3,4 then 1,4 then 5,5 then 4,2 then 1,1 then 3,1. The six letters you land on whisper the name of the thinking machine. What is the word?",
+    image: "",
+    hint: "No hints in the Logic segment.",
+    answer: "NEURAL"
   })
 ];
 
