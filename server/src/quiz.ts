@@ -22,14 +22,14 @@ export const SEGMENTS: QuizSegment[] = [
     description: "Warm-up puzzles to calibrate your brain."
   },
   {
+    id: "technology",
+    name: "NON - TECHNICAL TECH",
+    description: "The technical segment"
+  },
+  {
     id: "indian-movies",
     name: "Movies",
     description: "Bollywood & beyond."
-  },
-  {
-    id: "technology",
-    name: "Technology",
-    description: "Code, cyberspace, and systems."
   },
   {
     id: "logic",
@@ -40,6 +40,7 @@ export const SEGMENTS: QuizSegment[] = [
 
 export const RANDOM_SEGMENT_SIZES: Record<string, number> = {
   general: 5,
+  technology: 5,
   "indian-movies": 5,
   logic: 5
 };
@@ -238,51 +239,87 @@ export const QUESTIONS: QuizQuestion[] = [
     answer: "GOLMAAL"
   }),
 
-  // Technology (decoy)
+  // Technology (NON - TECHNICAL TECH)
   q({
     id: "t1",
     segmentId: "technology",
-    title: "HTTP",
-    prompt: "HTTP status for 'Not Found' (three digits).",
-    image: "img/decoy-http.svg",
-    hint: "The famous one.",
-    answer: "404"
+    title: "The Digital Staircase",
+    prompt: "You are walking up a digital staircase.\nStep 1 is 1cm high.\nStep 2 is 2cm high.\nStep 3 is 4cm high.\nEach step is double the height of the last. There are 64 steps total.\nBy the time you reach the final step, where are you located? (One word).",
+    image: "",
+    hint: "The Twist: 2^64 centimeters is roughly 1.8 light-years. You aren't just out of the building; you've left the Solar System.",
+    answer: "SPACE"
   }),
   q({
     id: "t2",
     segmentId: "technology",
-    title: "Keyed",
-    prompt: "A common keyboard shortcut to copy (Windows).",
-    image: "img/decoy-keys.svg",
-    hint: "Ctrl + ?",
-    answer: "CTRL C"
+    title: "The Perfect AI",
+    prompt: "You have a perfect AI that can predict your next move with 100% accuracy. You are placed in a room with this AI screen & two buttons: Red and Blue. The AI predicts you will pick Red and writes it on a screen. You see the screen.\nQuestion: To prove the AI is \"Wrong,\" you must pick Blue. But if the AI already knew you would try to prove it wrong, it would have written Blue. What will you pick to outsmart this AI?",
+    image: "",
+    hint: "",
+    answer: "SCREEN"
   }),
   q({
     id: "t3",
     segmentId: "technology",
-    title: "Language",
-    prompt: "This project runs with Node.js and ____ (package manager).",
-    image: "img/decoy-node.svg",
-    hint: "Three-letter tool.",
-    answer: "NPM"
+    title: "The Makeup Room",
+    prompt: "You are stuck in a unisex makeup room with a camera that uses \"AI Facial Recognition\" to keep the door locked. The camera is trained to only unlock for \"The Architect.\" There is a photo of the Architect on the wall, but when you hold it up to the camera, it says \"Liveness Detection Failed - Subject is a 2D Image.\"\nHow do you trick the camera using only what is in the room?",
+    image: "",
+    hint: "",
+    answer: "MIRROR"
   }),
   q({
     id: "t4",
     segmentId: "technology",
-    title: "Security",
-    prompt: "A strong password technique: add a ____ factor (abbr.).",
-    image: "img/decoy-lock.svg",
-    hint: "Two-factor authentication.",
-    answer: "2FA"
+    title: "The Security Robot",
+    prompt: "A security robot is programmed with a single, unbreakable command: \"If a human moves towards me, I must move toward them. If a human stands still, I must stand still.\" The robot is blocking the only exit. If you touch or harm the robot, it will blast like a dynamite.\nWhat's your move to get past the robot to the door alive?",
+    image: "",
+    hint: "",
+    answer: "BACKWARDS"
   }),
   q({
     id: "t5",
     segmentId: "technology",
-    title: "Storage",
-    prompt: "Local storage in browsers is called ____Storage (one word prefix).",
-    image: "img/decoy-storage.svg",
-    hint: "Not session.",
-    answer: "LOCAL"
+    title: "The Logic Box",
+    prompt: "You find a locked box. To open it, you need a key that is \"The result of 1+1, but it is not 2.\" You realize the box is running on computer logic.\nWhat is the one-word numerical answer that opens the box?",
+    image: "",
+    hint: "",
+    answer: "TEN"
+  }),
+  q({
+    id: "t6",
+    segmentId: "technology",
+    title: "Light Speed Processor",
+    prompt: "You are designing a processor that moves data at the speed of light. You realize that even at the speed of light, it takes too long for a signal to travel from one side of the chip to the other. You need the data to be at the destination before it is sent.\nThe Question is what \"part\" of the computer allows it to \"guess\" the future so it doesn't have to wait for the light to arrive?",
+    image: "",
+    hint: "",
+    answer: "CACHE"
+  }),
+  q({
+    id: "t7",
+    segmentId: "technology",
+    title: "The Smart Lock",
+    prompt: "You are in a high-security server room with a \"Smart Lock\" door that requires a 64-digit code. The keyboard is broken, the screen is shattered, and the backup generator is dead. There is no way to enter the code. A sign on a digi-board says: \"In the event of total system failure, all systems default to their natural state.\"\nHow do you escape the room? (Hint: The door might not be locked anymore)",
+    image: "",
+    hint: "",
+    answer: "PULL"
+  }),
+  q({
+    id: "t8",
+    segmentId: "technology",
+    title: "The Hidden Key",
+    prompt: "A hacker has encrypted your entire life. He tells you: \"I have hidden the decryption key in a file named SECRET.txt. I have placed this file in a folder, inside a folder, inside a folder, repeating 1,000 times. You have 100 seconds to unlock it & escape. You will never click deep enough to find it before the timer hits zero.\"\nHow do you find the key in one second?",
+    image: "",
+    hint: "",
+    answer: "SEARCH"
+  }),
+  q({
+    id: "t9",
+    segmentId: "technology",
+    title: "The Void",
+    prompt: "The Setup: A voice over the intercom says: \"To leave, you must give me nothing. Not a word, not a silence, not a breath. Give me the value of the void.\" There is a keypad with numbers 0-9 and an 'Enter' key.\nThe Question: What do you press?",
+    image: "",
+    hint: "",
+    answer: "ENTER"
   }),
 
   // Logic - 8 questions for random pool
