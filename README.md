@@ -21,7 +21,7 @@ Dark, techy, competition-style interactive quiz with an admin dashboard.
    - `npm.cmd run dev`
    - Open the Vite URL printed in the terminal (usually `http://localhost:5173`).
 
-## Running (production-ish)
+## Running (productionish)
 
 - Build:
   - `npm.cmd run build`
