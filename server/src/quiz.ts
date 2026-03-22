@@ -327,7 +327,53 @@ export const QUESTIONS: QuizQuestion[] = [
     id: "l1",
     segmentId: "logic",
     title: "The Turtle Owner",
-    prompt: "Five houses stand in a row from left to right (1–5).\nEach house has:\na color\na resident nationality\na favorite drink\na pet\na musical instrument\nEach category has exactly one of each:\nCategory\nOptions\nColors\nRed, Blue, Green, Yellow, White\nNationalities\nIndian, Japanese, German, Brazilian, Norwegian\nDrinks\nTea, Coffee, Milk, Juice, Water\nPets\nDog, Cat, Parrot, Rabbit, Turtle\nInstruments\nPiano, Violin, Guitar, Drums, Flute\n\nNo two houses share any item from a category.\n🧩 Clues\nThe Norwegian lives in the first house.\nThe green house is immediately to the right of the white house.\nThe person who drinks coffee lives in the green house.\nThe German plays the piano.\nThe yellow house resident plays the drums.\nThe Brazilian keeps a dog.\nThe center house (3) drinks milk.\nThe violin player lives next to the cat owner.\nThe Japanese plays the flute.\nThe blue house is next to the Norwegian.\nThe guitar player drinks juice.\nThe rabbit owner lives next to the drum player.\nThe parrot owner drinks tea.\nThe Brazilian lives next to the rabbit owner.\nThe water drinker lives next to the flute player.\nThe cat owner lives in the red house.\nThe violin player lives in the white house.\nThe Indian lives somewhere to the right of the red house.\nQuestions\nWho owns the turtle?\nThere is exactly one valid solution if the clues are followed correctly.",
+    prompt: `Five houses stand in a row from left to right (1–5).
+
+Each house has:
+- a color
+- a resident nationality
+- a favorite drink
+- a pet
+- a musical instrument
+
+Each category has exactly one of each:
+
+| Category | Options |
+| --- | --- |
+| **Colors** | Red, Blue, Green, Yellow, White |
+| **Nationalities** | Indian, Japanese, German, Brazilian, Norwegian |
+| **Drinks** | Tea, Coffee, Milk, Juice, Water |
+| **Pets** | Dog, Cat, Parrot, Rabbit, Turtle |
+| **Instruments** | Piano, Violin, Guitar, Drums, Flute |
+
+No two houses share any item from a category.
+
+🧩 **Clues**
+
+1. The Norwegian lives in the first house.
+2. The green house is immediately to the right of the white house.
+3. The person who drinks coffee lives in the green house.
+4. The German plays the piano.
+5. The yellow house resident plays the drums.
+6. The Brazilian keeps a dog.
+7. The center house (3) drinks milk.
+8. The violin player lives next to the cat owner.
+9. The Japanese plays the flute.
+10. The blue house is next to the Norwegian.
+11. The guitar player drinks juice.
+12. The rabbit owner lives next to the drum player.
+13. The parrot owner drinks tea.
+14. The Brazilian lives next to the rabbit owner.
+15. The water drinker lives next to the flute player.
+16. The cat owner lives in the red house.
+17. The violin player lives in the white house.
+18. The Indian lives somewhere to the right of the red house.
+
+**Questions**
+
+**1. Who owns the turtle?**
+
+There is exactly one valid solution if the clues are followed correctly.`,
     image: "",
     hint: "No hints in the Logic segment.",
     answer: "GERMAN"
@@ -336,7 +382,17 @@ export const QUESTIONS: QuizQuestion[] = [
     id: "l2",
     segmentId: "logic",
     title: "How Many Didn't",
-    prompt: "A farmer is checking his animals at the end of the day. While standing by the fence, he writes a quick note in his logbook:\n“On the farm there are 30 cows. 28 chickens.”\nLater that evening, while reviewing the note, the farmer suddenly realizes something odd and asks his assistant a question:\n“If there are 30 cows on the farm and 28 chickens, how many didn’t?”\nThe assistant looks confused because the farmer insists the answer is very simple.\nHow many didn’t?",
+    prompt: `A farmer is checking his animals at the end of the day. While standing by the fence, he writes a quick note in his logbook:
+
+_"On the farm there are 30 cows. 28 chickens."_
+
+Later that evening, while reviewing the note, the farmer suddenly realizes something odd and asks his assistant a question:
+
+**"If there are 30 cows on the farm and 28 chickens, how many didn't?"**
+
+The assistant looks confused because the farmer insists the answer is very simple.
+
+How many didn't?`,
     image: "",
     hint: "No hints in the Logic segment.",
     answer: "10"
@@ -345,7 +401,47 @@ export const QUESTIONS: QuizQuestion[] = [
     id: "l3",
     segmentId: "logic",
     title: "Sector-7 Assignment",
-    prompt: "During an investigation into a classified extraterrestrial breach, three field operatives were detained at a hidden research bunker known as Sector-7.\nThe operatives are:\nAgent Orion\nAgent Vega\nAgent Nova\nIntelligence reports indicate that each agent was stationed at exactly one of three secret facilities:\nArea 51 Research Base\nHawkins National Laboratory\nBlack Mesa Containment Facility\nEach facility has exactly one agent.\nHowever, interrogation is difficult because of their unusual communication behavior:\nOne agent always tells the truth.\nOne agent always lies.\nOne agent alternates between truth and lies (in any order).\nWhen investigators asked each agent:\n“Which facility are you stationed at?”\neach agent gave two statements.\n🗣 Agent Statements\nAgent Orion\n“I am stationed at Area 51.”\n“Agent Vega is stationed at Hawkins Laboratory.”\nAgent Vega\n“I am stationed at Area 51.”\n“Agent Nova is stationed at Black Mesa.”\nAgent Nova\n“Agent Orion is stationed at Hawkins Laboratory.”\n“Agent Vega is stationed at Area 51.”\nQuestion\nBased on the information above:\nWhich agent must be stationed at the Black Mesa Containment Facility?",
+    prompt: `During an investigation into a classified extraterrestrial breach, three field operatives were detained at a hidden research bunker known as Sector-7.
+
+**The operatives are:**
+- Agent Orion
+- Agent Vega
+- Agent Nova
+
+Intelligence reports indicate that each agent was stationed at exactly one of three secret facilities:
+- Area 51 Research Base
+- Hawkins National Laboratory
+- Black Mesa Containment Facility
+
+Each facility has exactly one agent.
+
+However, interrogation is difficult because of their unusual communication behavior:
+- One agent always tells the truth.
+- One agent always lies.
+- One agent alternates between truth and lies (in any order).
+
+When investigators asked each agent:
+_"Which facility are you stationed at?"_
+
+each agent gave two statements.
+
+🗣️ **Agent Statements**
+
+**Agent Orion**
+- "I am stationed at Area 51."
+- "Agent Vega is stationed at Hawkins Laboratory."
+
+**Agent Vega**
+- "I am stationed at Area 51."
+- "Agent Nova is stationed at Black Mesa."
+
+**Agent Nova**
+- "Agent Orion is stationed at Hawkins Laboratory."
+- "Agent Vega is stationed at Area 51."
+
+**Question**
+Based on the information above:
+**Which agent must be stationed at the Black Mesa Containment Facility?**`,
     image: "",
     hint: "No hints in the Logic segment.",
     answer: "NOVA"
@@ -354,7 +450,36 @@ export const QUESTIONS: QuizQuestion[] = [
     id: "l4",
     segmentId: "logic",
     title: "Strikers and Defenders",
-    prompt: "A slightly eccentric football analyst once claimed he could calculate the “distance” between clubs using nothing but their names.\nWhen reporters asked how, he refused to explain directly. Instead he told a story.\n“Think of letters like players on a pitch.\n Some are strikers who push the score up.\n Others are defenders who drag the score down.”\nTo demonstrate, he showed a few examples on a tactics board.\nCHELSEA  → 700 km away\nARSENAL  → 700 km away\nBARCELONA → 1000km away\nWOLVES   → 200 km away\nA journalist from FC Barcelona rolled his eyes.\n“These numbers look completely random.”\nThe analyst shrugged and continued his explanation:\n“My strikers are special. There are five of them. Each forward scores the same amount as half a millennium on the scoreboard.”\nHe then pointed at the rest of the alphabet.\n“Everyone else plays defence. Each defender clears the ball away by exactly two centuries.”\nThe Barcelona journalist stared at the board for a while, counted the letters, and finally said:\n“Wait… then your system should give a value for REALMADRID as well.”\nQuestion\nUsing the analyst’s strange rule, how far away should REALMADRID be from Manchester United?",
+    prompt: `A slightly eccentric football analyst once claimed he could calculate the "distance" between clubs using nothing but their names.
+
+When reporters asked how, he refused to explain directly. Instead he told a story.
+
+_"Think of letters like players on a pitch.
+ Some are strikers who push the score up.
+ Others are defenders who drag the score down."_
+
+To demonstrate, he showed a few examples on a tactics board.
+
+**CHELSEA** → 700 km away  
+**ARSENAL** → 700 km away  
+**BARCELONA** → 1000km away  
+**WOLVES** → 200 km away  
+
+A journalist from FC Barcelona rolled his eyes.
+_"Those numbers look completely random."_
+
+The analyst shrugged and continued his explanation:
+_"My strikers are special. There are five of them. Each forward scores the same amount as half a millennium on the scoreboard."_
+
+He then pointed at the rest of the alphabet.
+_"Everyone else plays defence. Each defender clears the ball away by exactly two centuries."_
+
+The Barcelona journalist stared at the board for a while, counted the letters, and finally said:
+_"Wait... then your system should give a value for REALMADRID as well."_
+
+**Question**
+
+**Using the analyst's strange rule, how far away should REALMADRID be from Manchester United?**`,
     image: "",
     hint: "No hints in the Logic segment.",
     answer: "800KM"
@@ -363,7 +488,29 @@ export const QUESTIONS: QuizQuestion[] = [
     id: "l5",
     segmentId: "logic",
     title: "Where Is Smirnoff",
-    prompt: "Months after the Starcourt Mall disaster, Dustin insists he can still remember exactly how everyone moved through the crowded fairgrounds that night. To prove it, he draws a grid on a piece of paper and says:\n“Pretend the Starcourt Mall entrance is the center of the map. Everything that happened that night can be traced from there.”\nThe fireworks were already lighting up the sky, the carnival music was blasting, and people were running everywhere after the chaos in the underground lab.\nDustin begins recalling where everyone went.\nEleven had just finished fighting the creature from the Upside Down. Exhausted but determined, she moved four blocks north toward the rides, then three blocks east toward the food stalls, before turning two blocks south after hearing Mike shout her name. Finally she drifted one block west to regroup with the others.\nMike, who had been frantically searching through the crowd, first ran two blocks west, then pushed five blocks north toward the fireworks stage. Spotting familiar faces, he cut three blocks east, before slowing down one block south when things started to calm down.\nWill, still feeling that strange connection to the Upside Down, kept glancing around nervously. He wandered three blocks south through the carnival booths, then crossed four blocks east past the games, before realizing the others were nearby and stepping two blocks north.\nAlexei had been smiling like a kid at the fair. Slurpee in one hand, a huge grin on his face after finally winning that stuffed Woody Woodpecker toy. Dustin remembers him wandering one block north toward the shooting game, then two blocks east toward the prize counter, before drifting one block south as the fireworks started. He took a final small step one block east, still holding the toy and watching the sky light up.\nMeanwhile Hopper, covered in dust from the underground chaos, stormed through the fair looking for Joyce and the kids. He marched six blocks south toward the parking lot, then doubled back two blocks west, corrected himself one block north, and finally stepped one block east when he realized he’d gone too far.\nDustin himself had been near the game stalls. He drifted three blocks east, walked two blocks north toward the giant Ferris wheel, then lazily stepped one block west and one block south, claiming he was “strategically observing the situation.”\nFinal Question\nWhere is Smirnoff now?",
+    prompt: `Months after the Starcourt Mall disaster, Dustin insists he can still remember exactly how everyone moved through the crowded fairgrounds that night. To prove it, he draws a grid on a piece of paper and says:
+
+_"Pretend the Starcourt Mall entrance is the center of the map. Everything that happened that night can be traced from there."_
+
+The fireworks were already lighting up the sky, the carnival music was blasting, and people were running everywhere after the chaos in the underground lab.
+
+Dustin begins recalling where everyone went.
+
+**Eleven** had just finished fighting the creature from the Upside Down. Exhausted but determined, she moved four blocks north toward the rides, then three blocks east toward the food stalls, before turning two blocks south after hearing Mike shout her name. Finally she drifted one block west to regroup with the others.
+
+**Mike**, who had been frantically searching through the crowd, first ran two blocks west, then pushed five blocks north toward the fireworks stage. Spotting familiar faces, he cut three blocks east, before slowing down one block south when things started to calm down.
+
+**Will**, still feeling that strange connection to the Upside Down, kept glancing around nervously. He wandered three blocks south through the carnival booths, then crossed four blocks east past the games, before realizing the others were nearby and stepping two blocks north.
+
+**Alexei** had been smiling like a kid at the fair. Slurpee in one hand, a huge grin on his face after finally winning that stuffed Woody Woodpecker toy. Dustin remembers him wandering one block north toward the shooting game, then two blocks east toward the prize counter, before drifting one block south as the fireworks started. He took a final small step one block east, still holding the toy and watching the sky light up.
+
+Meanwhile **Hopper**, covered in dust from the underground chaos, stormed through the fair looking for Joyce and the kids. He marched six blocks south toward the parking lot, then doubled back two blocks west, corrected himself one block north, and finally stepped one block east when he realized he'd gone too far.
+
+**Dustin** himself had been near the game stalls. He drifted three blocks east, walked two blocks north toward the giant Ferris wheel, then lazily stepped one block west and one block south, claiming he was "strategically observing the situation."
+
+**Final Question**
+
+**Where is Smirnoff now?**`,
     image: "",
     hint: "No hints in the Logic segment.",
     answer: "DEAD"
@@ -372,7 +519,79 @@ export const QUESTIONS: QuizQuestion[] = [
     id: "l6",
     segmentId: "logic",
     title: "Observatory Murder",
-    prompt: "Q6: (MURDER MYSTERY) At 9:40 PM, Dr. Mehta, a renowned astronomer, was found dead inside the observatory control room.\nThe building had already closed to the public. Only five researchers remained inside the observatory complex that night.\nInvestigators confirmed that exactly one of them entered the control room between 9:10 PM and 9:30 PM, when the murder occurred.\nPeople\nAarav\nSofia\nLukas\nMei\nDaniel\n\n\nEach person had:\na location in the building\nan item they carried\na reason they had been meeting Dr. Mehta earlier that week\na hallway sighting time\nNo two people share the same item, location, motive, or time.\nLocations\nTelescope Dome\nData Lab\nArchive Room\nControl Room Corridor\nEquipment Storage\nItems\nNotebook\nKeycard\nFlash Drive\nGloves\nLaser Pointer\nMotives\nFunding dispute\nTelescope access request\nData authorship conflict\nEquipment damage report\nInternship recommendation\nHallway sightings\n9:00 PM\n9:10 PM\n9:15 PM\n9:25 PM\n9:35 PM\nInvestigator Notes\nThe person seen at 9:00 PM had come from the Archive Room.\nMei was seen later than Lukas.\nThe Flash Drive carrier appeared immediately before the person from Equipment Storage.\nThe Notebook owner had requested the internship recommendation.\nThe person from the Telescope Dome appeared sometime after Aarav.\nSofia was not seen at 9:15 PM.\nThe Gloves carrier was seen exactly 10 minutes after the person from the Data Lab.\nThe Keycard owner appeared earlier than Daniel.\nThe Equipment damage report belonged to the person from Equipment Storage.\nLukas did not carry the Flash Drive.\nThe person seen at 9:35 PM had been in the Control Room Corridor.\nThe Flash Drive carrier had the data authorship conflict with Dr. Mehta.\nThe person seen at 9:25 PM had come from the Telescope Dome.\nAarav was not in the Archive Room.\nThe funding dispute belonged to Daniel.\nThe Flash Drive carrier was seen later than Sofia.\nAarav was seen at 9:10 PM.\nCritical Evidence\nInside the control room investigators found a dropped Flash Drive.Security analysis confirmed:\nThe person carrying the Flash Drive must have entered the control room before leaving the building.\n Who is the murderer?",
+    prompt: `**(MURDER MYSTERY)** At 9:40 PM, Dr. Mehta, a renowned astronomer, was found dead inside the observatory control room.
+
+The building had already closed to the public. Only five researchers remained inside the observatory complex that night.
+
+Investigators confirmed that exactly one of them entered the control room between **9:10 PM** and **9:30 PM**, when the murder occurred.
+
+**People**
+- Aarav
+- Sofia
+- Lukas
+- Mei
+- Daniel
+
+Each person had:
+- a location in the building
+- an item they carried
+- a reason they had been meeting Dr. Mehta earlier that week
+- a hallway sighting time
+
+No two people share the same item, location, motive, or time.
+
+**Locations**
+- Telescope Dome
+- Data Lab
+- Archive Room
+- Control Room Corridor
+- Equipment Storage
+
+**Items**
+- Notebook
+- Keycard
+- Flash Drive
+- Gloves
+- Laser Pointer
+
+**Motives**
+- Funding dispute
+- Telescope access request
+- Data authorship conflict
+- Equipment damage report
+- Internship recommendation
+
+**Hallway sightings**
+- 9:00 PM
+- 9:10 PM
+- 9:15 PM
+- 9:25 PM
+- 9:35 PM
+
+**Investigator Notes**
+1. The person seen at 9:00 PM had come from the Archive Room.
+2. Mei was seen later than Lukas.
+3. The Flash Drive carrier appeared immediately before the person from Equipment Storage.
+4. The Notebook owner had requested the internship recommendation.
+5. The person from the Telescope Dome appeared sometime after Aarav.
+6. Sofia was not seen at 9:15 PM.
+7. The Gloves carrier was seen exactly 10 minutes after the person from the Data Lab.
+8. The Keycard owner appeared earlier than Daniel.
+9. The Equipment damage report belonged to the person from Equipment Storage.
+10. Lukas did not carry the Flash Drive.
+11. The person seen at 9:35 PM had been in the Control Room Corridor.
+12. The Flash Drive carrier had the data authorship conflict with Dr. Mehta.
+13. The person seen at 9:25 PM had come from the Telescope Dome.
+14. Aarav was not in the Archive Room.
+15. The funding dispute belonged to Daniel.
+16. The Flash Drive carrier was seen later than Sofia.
+17. Aarav was seen at 9:10 PM.
+
+**Critical Evidence**
+Inside the control room investigators found a dropped **Flash Drive**. Security analysis confirmed:
+_The person carrying the Flash Drive must have entered the control room before leaving the building._
+
+**Who is the murderer?**`,
     image: "",
     hint: "No hints in the Logic segment.",
     answer: "MEI"
@@ -381,7 +600,24 @@ export const QUESTIONS: QuizQuestion[] = [
     id: "l7",
     segmentId: "logic",
     title: "Keypad Code",
-    prompt: "A secure laboratory door uses a 5-digit keypad.\n Each digit is distinct (0–9).\nAfter several failed attempts, the system logs show:\nAttempt\nFeedback\n91347\nTwo digits correct but both in wrong positions\n48215\nOne digit correct and in the correct position\n76024\nTwo digits correct, one in the right place\n41890\nNone of the digits appear in the code\n50731\nThree digits correct but all in wrong positions\n\nAll feedback is exact.\nQuestion\nWhat is the 5-digit access code?",
+    prompt: `A secure laboratory door uses a 5-digit keypad.
+Each digit is distinct (0–9).
+
+After several failed attempts, the system logs show:
+
+| Attempt | Feedback |
+| --- | --- |
+| **91347** | Two digits correct but both in wrong positions |
+| **48215** | One digit correct and in the correct position |
+| **76024** | Two digits correct, one in the right place |
+| **41890** | None of the digits appear in the code |
+| **50731** | Three digits correct but all in wrong positions |
+
+All feedback is exact.
+
+**Question**
+
+**What is the 5-digit access code?**`,
     image: "",
     hint: "No hints in the Logic segment.",
     answer: "73142"
@@ -390,7 +626,24 @@ export const QUESTIONS: QuizQuestion[] = [
     id: "l8",
     segmentId: "logic",
     title: "Thinking Machine",
-    prompt: "In the hall of letters there should be twenty-six seats,\nyet tonight one chair sits empty.\nThe guard of the gate, shaped like a hammer, never arrived,\nso the hall closed with only twenty-five inside.\nFind the square where the alphabet gathers in rows and columns, and follow these footsteps:\n3,4\n1,4\n5,5\n4,2\n1,1\n3,1\nWhen you stand where the numbers point, six letters will greet you.\nThey whisper the name of the thinking machine.",
+    prompt: `In the hall of letters there should be twenty-six seats,
+yet tonight one chair sits empty.
+
+The guard of the gate, shaped like a hammer, never arrived,
+so the hall closed with only twenty-five inside.
+
+Find the square where the alphabet gathers in rows and columns, and follow these footsteps:
+
+- 3,4
+- 1,4
+- 5,5
+- 4,2
+- 1,1
+- 3,1
+
+When you stand where the numbers point, six letters will greet you.
+
+They whisper the name of the thinking machine.`,
     image: "",
     hint: "No hints in the Logic segment.",
     answer: "NEURAL"
