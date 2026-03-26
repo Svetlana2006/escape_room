@@ -19,6 +19,9 @@ export default function AdminDashboardPage() {
     Array<{
       id: string;
       email: string;
+      teamName: string;
+      teamLeaderName: string;
+      contactNumber: string;
       status: string;
       createdAt: number;
       startedAt: number | null;
@@ -65,7 +68,7 @@ export default function AdminDashboardPage() {
   }
 
   function onExportToExcel() {
-    const headers = ["Email", "Status", "Solved Count", "Total Time (s)", "Penalty (s)", "Started", "Finished", "Attempt ID"];
+    const headers = ["Team Name", "Leader Name", "Email", "Contact", "Status", "Solved Count", "Total Time (s)", "Penalty (s)", "Started", "Finished", "Attempt ID"];
     
     const escapeCsv = (val: any) => {
       if (val === null || val === undefined) return '""';
@@ -75,7 +78,10 @@ export default function AdminDashboardPage() {
     };
 
     const rows = attempts.map((a) => [
+      a.teamName,
+      a.teamLeaderName,
       a.email,
+      a.contactNumber,
       a.status,
       a.solvedCount, // Export as integer to prevent Excel from converting fractions like '5/20' to 'May-20'
       a.totalSeconds ?? "—",
@@ -149,7 +155,10 @@ export default function AdminDashboardPage() {
           <table style={{ width: "100%", borderCollapse: "separate", borderSpacing: 0 }}>
             <thead>
               <tr style={{ textAlign: "left", color: "var(--muted)", fontFamily: "var(--mono)", fontSize: 12 }}>
+                <th style={{ padding: "10px 8px" }}>Team Name</th>
+                <th style={{ padding: "10px 8px" }}>Leader</th>
                 <th style={{ padding: "10px 8px" }}>Email</th>
+                <th style={{ padding: "10px 8px" }}>Contact</th>
                 <th style={{ padding: "10px 8px" }}>Status</th>
                 <th style={{ padding: "10px 8px" }}>Solved</th>
                 <th style={{ padding: "10px 8px" }}>Total Time</th>
@@ -162,7 +171,10 @@ export default function AdminDashboardPage() {
             <tbody>
               {attempts.map((a) => (
                 <tr key={a.id} style={{ borderTop: "1px solid rgba(146, 175, 255, 0.12)" }}>
+                  <td style={{ padding: "10px 8px" }}>{a.teamName}</td>
+                  <td style={{ padding: "10px 8px" }}>{a.teamLeaderName}</td>
                   <td style={{ padding: "10px 8px" }}>{a.email}</td>
+                  <td style={{ padding: "10px 8px" }}>{a.contactNumber}</td>
                   <td style={{ padding: "10px 8px", fontFamily: "var(--mono)" }}>
                     <span className={a.status === "completed" ? "good" : a.status === "abandoned" ? "bad" : "muted"}>
                       {a.status}

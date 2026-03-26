@@ -1,7 +1,10 @@
 const KEY = "escape_room_quiz_v1";
 
 export type Persisted = {
+  teamName?: string;
+  teamLeaderName?: string;
   email?: string;
+  contactNumber?: string;
   attemptId?: string;
   adminToken?: string;
 };
@@ -24,7 +27,14 @@ export function writePersisted(update: Partial<Persisted>) {
 
 export function clearAttempt() {
   const cur = readPersisted();
-  writePersisted({ ...cur, attemptId: undefined, email: undefined });
+  writePersisted({
+    ...cur,
+    attemptId: undefined,
+    email: undefined,
+    teamName: undefined,
+    teamLeaderName: undefined,
+    contactNumber: undefined
+  });
 }
 
 export function clearAdmin() {

@@ -6,6 +6,9 @@ export type AttemptStatus = "created" | "in_progress" | "completed" | "abandoned
 export type Attempt = {
   id: string;
   email: string;
+  teamName: string;
+  teamLeaderName: string;
+  contactNumber: string;
   createdAt: number;
   startedAt?: number;
   finishedAt?: number;

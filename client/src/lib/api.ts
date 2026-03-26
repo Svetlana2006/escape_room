@@ -60,10 +60,10 @@ export type AttemptState = {
   solvedBySegment: Record<string, number>;
 };
 
-export async function startAuth(email: string) {
+export async function startAuth(teamName: string, teamLeaderName: string, email: string, contactNumber: string) {
   return request<{ kind: "admin"; requiresPassword: true } | { kind: "player"; attemptId: string }>("/api/auth/start", {
     method: "POST",
-    body: JSON.stringify({ email })
+    body: JSON.stringify({ teamName, teamLeaderName, email, contactNumber })
   });
 }
 
@@ -129,6 +129,9 @@ export async function adminListAttempts() {
     attempts: Array<{
       id: string;
       email: string;
+      teamName: string;
+      teamLeaderName: string;
+      contactNumber: string;
       status: string;
       createdAt: number;
       startedAt: number | null;

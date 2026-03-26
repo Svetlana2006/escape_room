@@ -7,7 +7,10 @@ import PageShell from "../components/PageShell";
 export default function LoginPage() {
   const nav = useNavigate();
   const persisted = useMemo(() => readPersisted(), []);
+  const [teamName, setTeamName] = useState(persisted.teamName ?? "");
+  const [teamLeaderName, setTeamLeaderName] = useState(persisted.teamLeaderName ?? "");
   const [email, setEmail] = useState(persisted.email ?? "");
+  const [contactNumber, setContactNumber] = useState(persisted.contactNumber ?? "");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -16,17 +19,12 @@ export default function LoginPage() {
     setError(null);
     setBusy(true);
     try {
-      // Check quiz status first for players
-      if (email !== "svetlana.2006.kumar@gmail.com") { // Fast path if admin email is known, or just wait for server error
-        // But better to just let startAuth handle it and catch the error
-      }
-      
-      const res = await startAuth(email);
+      const res = await startAuth(teamName, teamLeaderName, email, contactNumber);
       if (res.kind === "admin") {
-        writePersisted({ email });
+        writePersisted({ teamName, teamLeaderName, email, contactNumber });
         nav("/admin-login");
       } else {
-        writePersisted({ email, attemptId: res.attemptId });
+        writePersisted({ teamName, teamLeaderName, email, contactNumber, attemptId: res.attemptId });
         nav("/mission");
       }
     } catch (err) {
@@ -47,9 +45,29 @@ export default function LoginPage() {
         <div className="panel card">
           <h1 className="h1">Access Portal</h1>
           <p className="sub">
-            Enter your email to receive your mission. If you are the operator, you’ll be prompted for admin credentials.
+            Enter your team details to receive your mission. If you are the operator, use admin credentials.
           </p>
           <form onSubmit={onSubmit}>
+            <div className="field">
+              <div className="label">Team Name</div>
+              <input
+                className="input"
+                value={teamName}
+                onChange={(e) => setTeamName(e.target.value)}
+                placeholder="Team X"
+                required
+              />
+            </div>
+            <div className="field">
+              <div className="label">Team Leader Name</div>
+              <input
+                className="input"
+                value={teamLeaderName}
+                onChange={(e) => setTeamLeaderName(e.target.value)}
+                placeholder="John Doe"
+                required
+              />
+            </div>
             <div className="field">
               <div className="label">Email</div>
               <input
@@ -57,6 +75,18 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="name@domain.com"
+                type="email"
+                required
+              />
+            </div>
+            <div className="field">
+              <div className="label">Contact Number</div>
+              <input
+                className="input"
+                value={contactNumber}
+                onChange={(e) => setContactNumber(e.target.value)}
+                placeholder="9999999999"
+                required
               />
             </div>
             {error ? (

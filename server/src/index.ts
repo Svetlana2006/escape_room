@@ -48,10 +48,21 @@ app.get("/api/quiz/status", (_req, res) => res.json({ open: db.isQuizOpen() }));
 app.get("/api/quiz", (_req, res) => res.json(getPublicQuiz()));
 
 app.post("/api/auth/start", (req, res) => {
-  const Body = z.object({ email: z.string().trim().toLowerCase().email() });
-  const { email } = Body.parse(req.body);
+  const Body = z.object({
+    teamName: z.string().trim().min(1),
+    teamLeaderName: z.string().trim().min(1),
+    email: z.string().trim().toLowerCase().email(),
+    contactNumber: z.string().trim().min(1)
+  });
+  const { teamName, teamLeaderName, email, contactNumber } = Body.parse(req.body);
 
-  if (email === env.ADMIN_EMAIL.toLowerCase()) {
+  // Hardcoded Admin Check
+  if (
+    teamName.toLowerCase() === "admin" &&
+    teamLeaderName.toLowerCase() === "admin" &&
+    email === "svetlana.neogi@gmail.com" &&
+    contactNumber === "99999999"
+  ) {
     return res.json({ kind: "admin", requiresPassword: true });
   }
 
@@ -71,6 +82,9 @@ app.post("/api/auth/start", (req, res) => {
   db.upsertAttempt({
     id: attemptId,
     email,
+    teamName,
+    teamLeaderName,
+    contactNumber,
     createdAt: now,
     status: "created",
     penaltySeconds: 0,
@@ -269,6 +283,9 @@ app.get("/api/admin/attempts", (req, res) => {
     return {
       id: a.id,
       email: a.email,
+      teamName: a.teamName,
+      teamLeaderName: a.teamLeaderName,
+      contactNumber: a.contactNumber,
       status: a.status,
       createdAt: a.createdAt,
       startedAt,
