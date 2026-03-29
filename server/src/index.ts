@@ -57,12 +57,7 @@ app.post("/api/auth/start", (req, res) => {
   const { teamName, teamLeaderName, email, contactNumber } = Body.parse(req.body);
 
   // Hardcoded Admin Check
-  if (
-    teamName.toLowerCase() === "admin" &&
-    teamLeaderName.toLowerCase() === "admin" &&
-    email === "svetlana.neogi@gmail.com" &&
-    contactNumber === "99999999"
-  ) {
+  if (email === env.ADMIN_EMAIL.toLowerCase()) {
     return res.json({ kind: "admin", requiresPassword: true });
   }
 
