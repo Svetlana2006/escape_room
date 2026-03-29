@@ -523,7 +523,7 @@ Investigators confirmed that exactly one of them entered the control room betwee
 - Sofia\n
 - Lukas\n
 - Meina\n
-- Daniel\n
+- Danie\n
 \n
 Each person had:\n
 - a location in the building\n
@@ -569,14 +569,14 @@ No two people share the same item, location, motive, or time.\n
 5. The person from the Telescope Dome appeared sometime after Aarav.\n
 6. Sofia was not seen at 9:15 PM.\n
 7. The Gloves carrier was seen exactly 10 minutes after the person from the Data Lab.\n
-8. The Keycard owner appeared earlier than Daniel.\n
+8. The Keycard owner appeared earlier than Danie.\n
 9. The Equipment damage report belonged to the person from Equipment Storage.\n
 10. Lukas did not carry the Flash Drive.\n
 11. The person seen at 9:35 PM had been in the Control Room Corridor.\n
 12. The Flash Drive carrier had the data authorship conflict with Dr. Mehta.\n
 13. The person seen at 9:25 PM had come from the Telescope Dome.\n
 14. Aarav was not in the Archive Room.\n
-15. The funding dispute belonged to Daniel.\n
+15. The funding dispute belonged to Danie.\n
 16. The Flash Drive carrier was seen later than Sofia.\n
 17. Aarav was seen at 9:10 PM.\n
 **Critical Evidence**\n
