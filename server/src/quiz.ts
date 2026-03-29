@@ -152,7 +152,7 @@ export const QUESTIONS: QuizQuestion[] = [
     id: "m1",
     segmentId: "indian-movies",
     title: "Inspiring Legacy",
-    prompt: "After making this seriously inspiring movie, the director of the same made a comedy drama movie later on having a bunch of engineering students bringing back the nostalgia of their clg lives, not only the previously mentioned movie inspired but also removed the veil from so bad societal injustice in our country against specific humans. These emojis can tell you a lot about the movie : 🫃 + 👧 + 💇‍♀️ + 🎖️. Name the Last Name ( Surname ) associated with the movie’s original inspiration.",
+    prompt: "After making this seriously inspiring movie, the director of this movie made a comedy drama movie later on, having a bunch of engineering students bringing back the nostalgia of their college lives. The previously mentioned movie not only inspired but also removed the veil from some bad societal regimes and unfair practices in our country against a particular group of people. These emojis can tell you a lot about the movie : 🫃 + 👧 + 💇‍♀️ + 🎖️. What is the last name of the person associated with the movie’s original inspiration?",
     image: "",
     hint: "Think of the surname of the sisters who inspired the wrestling biopic.",
     answer: "PHOGAT"
@@ -161,7 +161,7 @@ export const QUESTIONS: QuizQuestion[] = [
     id: "m2",
     segmentId: "indian-movies",
     title: "The Cannes Phase",
-    prompt: "An emotion or a phase in life that we all never wanna experience voluntarily, still we all experience that in our lives. But after that phase or emotional state is over and we actually experience anything good, that makes a cherish that good time. The word for that emotion was used in a movie dialogue popularising a meme that “why doesn’t this phase end”(obvi not in this language). Sadly this movie didn’t gross a lot in india, but after getting recognised at cannes it did make some profit from overseas premiers. Still remains in heart of a niche cult audience. Guess the movie, then tell which actor made his debut through this movie.",
+    prompt: "An emotion or a phase in life that we all never wanna experience voluntarily, still we all experience it nonetheless. However, after that phase or emotional state is over and we actually experience anything good, it makes us cherish that good time. The word for that emotion was used in a movie dialogue popularising a meme that translates to “Why doesn’t this phase end?” Sadly this movie didn’t gross a lot in India, but after getting recognised at Cannes, it did make some profit from overseas premiers. It still remains in the hearts of a niche cult audience. Guess the movie, and tell which actor made his debut through this movie.",
     image: "",
     hint: "The movie title translates to a state of 'Masaan' (cremation ground).",
     answer: "VICKY KAUSHAL"
@@ -170,7 +170,7 @@ export const QUESTIONS: QuizQuestion[] = [
     id: "m3",
     segmentId: "indian-movies",
     title: "Bolly Satire",
-    prompt: "In the wold of parody or satire movie, Bollywood kind of lies behind as compared to other movie industries, But with this movie we actually showed our guts like even till now stand up comics hold them back before making a joke regarding this unfortunate incident even but this indian movie didn’t hold back not only they did satire the whole incident but also shed light on a conspiracy against american government that no one was talking about. These emojis can tell you everything about the movie if you are actually a BollyGeek since 2010s : ✈️🏢🏢. Think of the movie and guess the lead actor, not only he was famous in india for acting but for his songs too, one of his such song by coke studios blew up in india largely in 2010s, tell the song name.",
+    prompt: "In the world of parody or satire movies, Bollywood kind of lags behind as compared to other movie industries, But with this movie, we actually bared our guts. Even till now stand up comedians hold back before making a joke regarding this unfortunate incident but this Indian movie didn’t hold back. Not only did they make a satire of the whole incident but also shed light on a conspiracy against American government that no one was talking about. These emojis can tell you everything about the movie if you are actually a BollyGeek since 2010s : ✈️🏢🏢. Think of the movie and the lead actor, not only was he famous in India for acting but for his songs too, one of his songs by Coke Studios blew up in India largely in the 2010s. Tell the name of the song.",
     image: "",
     hint: "This Pakistani actor/singer appeared in 'Tere Bin Laden'. His Coke Studio hit is also the name of a character in a movie.",
     answer: "ROCKSTAR"
@@ -179,16 +179,16 @@ export const QUESTIONS: QuizQuestion[] = [
     id: "m4",
     segmentId: "indian-movies",
     title: "Gore & Spirituality",
-    prompt: "This movie came from a director ,who mentions danny boyle as an inspiration for his direction style, the movie revolves around a character who initially was an honest, humble and poor but later his generations become a known name in gangsta business for revenge. This movie actually started the gore action in indian films which was considered a taboo till then and with this movie giving in india such action kept leading other directors to show even more gore action scenes leading to movies like - animal and toxic. This movie also has a dedicated cult fanbase but not niche at all. Coming back to the director, director comes from a city well known for it’s spirituality reasons. Tell the name of that city. ( Hint : someone famous as vin diesel of india is also associated with this city. )",
+    prompt: "This movie came from a director, who mentions Danny Boyle as an inspiration for his direction style. The movie revolves around a character who initially was honest, humble and poor but later his generations become a known name in a gangster business for revenge. This movie actually started the gore action genre in Indian films which was considered a taboo till then. This movie gave Indian cinema and Indian directors a sense of direction to show even more gore action scenes leading to movies like - Animal and Toxic. This movie also has a dedicated cult fanbase but not a niche at all. Coming back to the director, the director comes from a city well known for its spirituality reasons. Tell the name of that city.",
     image: "",
-    hint: "A city in Uttar Pradesh near the Nepal border, birthplace of Anurag Kashyap.",
+    hint: "Someone famous as Vin Diesel of India is also associated with this city.",
     answer: "GORAKHPUR"
   }),
   q({
     id: "m5",
     segmentId: "indian-movies",
     title: "Bridge to Reality",
-    prompt: "This movie stars an actor who was well known for successfully bridging bollywood and hollywood in late 2000s. A funny movie wrapping up the dark and sad truths about life, connecting an IT employee with the harsh life and society. What starts with a sad death turns into something funny but still forces us to ponder upon a lot of things we’ve been learning since childhood and questioning are societal teachings and morals. Not only this movie tells us a lot about self discovery but also became a memorable work for the late actor we mentioned in the beginning. But other than that it also was a debut movie for one other actor who has been able to make a name for himself now till 2026, Name that debut actor in this movie.",
+    prompt: "This movie stars an actor who was well known for successfully bridging Bollywood and Hollywood in late 2000s. A funny movie wrapping up the dark and sad truths about life, connecting an IT employee with the harsh life and society. What starts with a sad death turns into something funny but still forces us to ponder upon a lot of things we’ve been learning since childhood and questioning our societal teachings and morals. Not only this movie tells us a lot about self discovery but also became a memorable work for the late actor we mentioned in the beginning. But other than that, it also was a debut movie for one other actor who has been able to make a name for himself now till 2026. Name that debut actor in this movie.",
     image: "",
     hint: "The late actor is Irrfan Khan. The debutant is a superstar from the Malayalam industry.",
     answer: "DULQUER SALMAAN"
@@ -196,8 +196,8 @@ export const QUESTIONS: QuizQuestion[] = [
   q({
     id: "m6",
     segmentId: "indian-movies",
-    title: "Go Goa Gone",
-    prompt: "This movie flopped on box office but with time people especially the youth of india started to like this movie eventually. It stars a famous actor X, one other actor Y in this movie is married to the sister of X in real life, another actor is a stand up comedian who came into controversy during lockdown period for mocking india’s behaviour on women and duality of indian society. This movie was first indian movie of it’s genre, the genre was a combination of 2 genres, after this some other movies were also made in this genre and got love from people. These emojis are enough hints for you to guess: car + island + party + zombie. Now tell the name of the sister of X who is married to Y, she also did a cameo in the movie for a couple of minutes.",
+    title: "Go Going Gone",
+    prompt: "This movie flopped at the box office but with time, people, especially the youth of India started to like this movie eventually. It stars a famous actor ‘X’, one other actor ‘Y’ in this movie is married to the sister of ‘X’ in real life. Another actor is a stand up comedian who came into controversy during the lockdown period for mocking India's behaviour on women and duality of Indian society. This movie was the first Indian movie of its genre. The main genre was a combination of 2 sub genres. Soon after this some other movies were also made in this genre and got love from people. These emojis are enough hints for you to guess : 🚗🏝️🥳🧟 Now you have to tell the name of the sister of ‘X’ who is married to ‘Y’ She also had a small cameo role in the movie for a couple of minutes.",
     image: "",
     hint: "X is Saif Ali Khan, and Y is Kunal Khemu.",
     answer: "SOHA ALI KHAN"
@@ -206,16 +206,16 @@ export const QUESTIONS: QuizQuestion[] = [
     id: "m7",
     segmentId: "indian-movies",
     title: "Bunny to Brahmastra",
-    prompt: "This movie is definitely in top 5 movies list of almost every 2010s kid, it introduced us to a character which inspired literally almost all of us to travel and explore the world. Hint: open eyes plus bunny. The director of this movie also directed one of the most expensive and VFX heavy movies in india around early 2020s. That later movie became profitable only after selling rights and everything, but on box office it was not able to recover its budget and got mixed reviews. Hint: fire plus trident. Tell the name of this director.",
+    prompt: "This movie is definitely in top 5 movies list of almost every 2010s kid, it introduced us to a character which inspired literally almost all of us to travel and explore the world. The director of this movie also directed one of the most expensive and VFX heavy movies in India around the early 2020s. This movie became profitable only after selling its rights and everything. On box office it wasn’t able to recover its budget and got mixed reviews",
     image: "",
-    hint: "Think 'Yeh Jawaani Hai Deewani' and 'Brahmastra'.",
+    hint: "👀🐰, 🔥🔱",
     answer: "AYAN MUKERJI"
   }),
   q({
     id: "m8",
     segmentId: "indian-movies",
     title: "Super Chor",
-    prompt: "A 2000s movie inspired from a real life super chor gave us a social commentary on how a kid’s upbringing, traumas and little incidents can shape him as a human in future. On one side where in india we believe parents are a form of god, this film also shows that they are also humans who make mistakes and sometimes mess up their kids upbringing. The phrase super chor is enough to guess the movie if you have seen good 2000s films. The lead actor is often known for complex and offbeat roles. Tell the name of the lead character.",
+    prompt: "A 2000s movie, inspired from a real life “super chor”, that gave us a social commentary on how a kid’s upbringing, his traumas and little incidents can shape him as a human in future which was done in Hindi films before that. On one side where in India we believe that parents are a form of god, this film also shows the side that they are also humans ultimately who also make mistakes and sometimes they think they are always right. They can mess up their kids' upbringing. The word “super chor” is enough to guess the movie. If you’ve actually seen good 2000s movies, you'll get it. The lead actor of this movie is often known for his complex and offbeat roles in a lot of movies. Tell the name of the lead character.",
     image: "",
     hint: "The film is 'Oye Lucky! Lucky Oye!'.",
     answer: "LUCKY"
@@ -224,18 +224,18 @@ export const QUESTIONS: QuizQuestion[] = [
     id: "m9",
     segmentId: "indian-movies",
     title: "Resistance in Red",
-    prompt: "A movie released in mid 2010s drew attention towards how gender equality is the need of the hour in our country. It received backlash from so called men’s rights activists, and even the censor board made many cuts that the director opposed because those scenes were imagery of the society we live in. When premiered overseas without cuts, it got recognition for the issue it raised and won two major film awards. The storyline revolved around resistance against patriarchal norms, female desire and autonomy. Name the movie. Little hint: lipstick.",
+    prompt: "A movie released in the mid 2010s drew attention towards how gender equality is the need of the hour in our country. This movie, however, received a lot of backlash from so-called men's rights activists but also our censor board made cuts in this movie, which the director was not happy about. According to the director, those scenes were also an imagery of the society we live in. But when it premiered overseas, without any cuts, not only did it get the credit due for the issues it raised but also won 2 major film awards. The film’s major storyline revolved around resistance against patriarchal norms, female desire and autonomy. Name the movie.",
     image: "",
-    hint: "The title includes both a cosmetic item and a garment associated with modesty.",
+    hint: " 💄",
     answer: "LIPSTICK UNDER MY BURKHA"
   }),
   q({
     id: "m10",
     segmentId: "indian-movies",
     title: "Silent Franchise",
-    prompt: "This mid 2000s cult classic comedy birthed one of Bollywood's longest-running franchises. It revolves around four useless college-expelled friends who con their way into a bungalow by pretending to be related to the owners. One of the most iconic characters in the group cannot speak and communicates entirely in hilarious high-pitched grunts. Hint: speaking plus silent, blind man plus old woman. The director later became synonymous with defying gravity and blowing up SUVs, creating India's biggest cop action stunts. Hint: police car plus explosion plus lion. Tell the name of this comedy movie.",
+    prompt: "This mid 2000s cult classic comedy birthed one of Bollywood's longest-running franchises. It revolves around four absolutely useless, college-expelled friends who con their way into a bungalow by pretending to be related to the owners. One of the most iconic characters in the group cannot speak and communicate entirely in hilarious, high-pitched grunts. The director of this film later became literally synonymous with defying gravity and blowing up SUVs, eventually creating India's most massive and explosive Cop action stunts, usually stepping out of spinning cars. ",
     image: "",
-    hint: "Directed by Rohit Shetty before the cop-universe era.",
+    hint: "🗣️🔇 👨‍🦯👵, 🚓💥🦁",
     answer: "GOLMAAL"
   }),
 
