@@ -120,12 +120,18 @@ function loadEnvFile(filePath) {
 }
 
 function runNpm(args) {
-  const npmCommand = process.platform === "win32" ? "npm.cmd" : "npm";
-  const result = spawnSync(npmCommand, args, {
-    cwd: repoRoot,
-    stdio: "inherit",
-    shell: false
-  });
+  const result =
+    process.platform === "win32"
+      ? spawnSync(process.env.ComSpec || "cmd.exe", ["/d", "/s", "/c", buildWindowsCommand("npm.cmd", args)], {
+          cwd: repoRoot,
+          stdio: "inherit",
+          shell: false
+        })
+      : spawnSync("npm", args, {
+          cwd: repoRoot,
+          stdio: "inherit",
+          shell: false
+        });
 
   if (result.error) {
     console.error(result.error.message);
@@ -135,6 +141,18 @@ function runNpm(args) {
   if (result.status !== 0) {
     process.exit(result.status ?? 1);
   }
+}
+
+function buildWindowsCommand(command, args) {
+  return [command, ...args.map(quoteForCmd)].join(" ");
+}
+
+function quoteForCmd(value) {
+  if (!value || /[\s"&^|<>]/.test(value)) {
+    return `"${String(value).replace(/"/g, '""')}"`;
+  }
+
+  return value;
 }
 
 async function safeReadText(response) {
