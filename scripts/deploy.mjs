@@ -1,4 +1,4 @@
-import { execSync } from "node:child_process";
+import { spawnSync } from "node:child_process";
 import { existsSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
@@ -12,19 +12,7 @@ loadEnvFile(path.join(repoRoot, ".env.deploy"));
 const remoteInfo = getRemoteInfo();
 const owner = process.env.GITHUB_DEPLOY_OWNER || remoteInfo.owner;
 const repo = process.env.GITHUB_DEPLOY_REPO || remoteInfo.repo;
-const ref = process.env.GITHUB_DEPLOY_REF || getGitOutput("branch --show-current") || "main";
-const workflow = process.env.GITHUB_DEPLOY_WORKFLOW || "deploy-pages-render.yml";
-const token =
-  process.env.DEPLOY_GITHUB_TOKEN ||
-  process.env.GITHUB_TOKEN ||
-  process.env.GH_TOKEN;
-
-if (!token) {
-  console.error(
-    "Missing a GitHub token. Set DEPLOY_GITHUB_TOKEN, GITHUB_TOKEN, or GH_TOKEN before running npm run deploy."
-  );
-  process.exit(1);
-}
+const renderDeployHookUrl = process.env.RENDER_DEPLOY_HOOK_URL;
 
 if (!owner || !repo) {
   console.error(
@@ -34,34 +22,37 @@ if (!owner || !repo) {
 }
 
 const actionsUrl = `https://github.com/${owner}/${repo}/actions`;
-const dispatchUrl = `https://api.github.com/repos/${owner}/${repo}/actions/workflows/${encodeURIComponent(workflow)}/dispatches`;
+console.log("Publishing client to gh-pages...");
+runNpm(["-w", "client", "run", "deploy"]);
 
-const response = await fetch(dispatchUrl, {
+console.log(`gh-pages publish finished. Watch GitHub Actions here: ${actionsUrl}`);
+
+if (!renderDeployHookUrl) {
+  console.warn(
+    "RENDER_DEPLOY_HOOK_URL is not set, so Render was not asked to redeploy. Add it to .env.deploy to complete the flow."
+  );
+  process.exit(0);
+}
+
+console.log("Triggering Render redeploy hook...");
+
+const response = await fetch(renderDeployHookUrl, {
   method: "POST",
   headers: {
-    Authorization: `Bearer ${token}`,
-    Accept: "application/vnd.github+json",
     "User-Agent": `${repo}-deploy-script`
-  },
-  body: JSON.stringify({
-    ref,
-    inputs: {
-      triggered_by: "npm run deploy"
-    }
-  })
+  }
 });
 
 if (!response.ok) {
   const details = await safeReadText(response);
-  console.error(`Failed to trigger ${workflow} on ${owner}/${repo}@${ref}.`);
+  console.error("Render deploy hook failed.");
   if (details) {
     console.error(details);
   }
   process.exit(1);
 }
 
-console.log(`Triggered ${workflow} for ${owner}/${repo}@${ref}.`);
-console.log(`Watch it here: ${actionsUrl}`);
+console.log("Render redeploy requested.");
 
 function getRemoteInfo() {
   const remote = process.env.GITHUB_REPOSITORY
@@ -88,15 +79,18 @@ function getRemoteInfo() {
 }
 
 function getGitOutput(args) {
-  try {
-    return execSync(`git ${args}`, {
-      cwd: repoRoot,
-      encoding: "utf8",
-      stdio: ["ignore", "pipe", "ignore"]
-    }).trim();
-  } catch {
+  const segments = args.split(" ");
+  const result = spawnSync("git", segments, {
+    cwd: repoRoot,
+    encoding: "utf8",
+    shell: false
+  });
+
+  if (result.status !== 0 || result.error) {
     return "";
   }
+
+  return (result.stdout || "").trim();
 }
 
 function loadEnvFile(filePath) {
@@ -122,6 +116,24 @@ function loadEnvFile(filePath) {
     if (key && !(key in process.env)) {
       process.env[key] = value;
     }
+  }
+}
+
+function runNpm(args) {
+  const npmCommand = process.platform === "win32" ? "npm.cmd" : "npm";
+  const result = spawnSync(npmCommand, args, {
+    cwd: repoRoot,
+    stdio: "inherit",
+    shell: false
+  });
+
+  if (result.error) {
+    console.error(result.error.message);
+    process.exit(1);
+  }
+
+  if (result.status !== 0) {
+    process.exit(result.status ?? 1);
   }
 }
 

@@ -32,16 +32,14 @@ Dark, techy, competition-style interactive quiz with an admin dashboard.
 
 - `npm.cmd run deploy`
 - What it does:
-  - dispatches the GitHub Actions workflow in [`.github/workflows/deploy-pages-render.yml`](.github/workflows/deploy-pages-render.yml)
-  - republishes the client to the `gh-pages` branch, so you can see a fresh run in the GitHub Actions tab
-  - triggers Render's deploy hook so the service redeploys the latest commit on its configured branch
+  - republishes the client to the `gh-pages` branch
+  - triggers the GitHub Actions workflow in [`.github/workflows/deploy-pages-render.yml`](.github/workflows/deploy-pages-render.yml) when that branch update lands, so you can see a fresh run in the Actions tab
+  - posts to Render's deploy hook so the connected service redeploys the latest commit on its configured branch
 
 ### One-time setup
 
 1. Create a local `.env.deploy` file from [`.env.deploy.example`](.env.deploy.example).
-2. Put a GitHub token in `DEPLOY_GITHUB_TOKEN`.
-   - Classic token: `repo` + `workflow`
-   - Fine-grained token: repository access with Actions write permission
-3. In your GitHub repo settings, add an Actions secret named `RENDER_DEPLOY_HOOK_URL` with your Render deploy hook URL.
+2. Put your Render deploy hook URL into `RENDER_DEPLOY_HOOK_URL`.
+3. Commit and push [`.github/workflows/deploy-pages-render.yml`](.github/workflows/deploy-pages-render.yml) once so GitHub knows about the workflow.
 
-After that, every `npm.cmd run deploy` call will create a new workflow run in GitHub Actions and then ask Render to redeploy the latest pushed commit.
+After that, every `npm.cmd run deploy` call will republish `gh-pages`, create a visible workflow run in GitHub Actions from the `gh-pages` push, and ask Render to redeploy.
