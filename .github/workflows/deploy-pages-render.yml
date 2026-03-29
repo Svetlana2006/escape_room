@@ -1,0 +1,57 @@
+name: Deploy Pages and Render
+
+on:
+  workflow_dispatch:
+    inputs:
+      triggered_by:
+        description: "Who requested the deploy"
+        required: false
+        default: "npm run deploy"
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-pages:
+    name: Publish gh-pages
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure git author
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Publish client to gh-pages
+        run: npm run deploy:pages:publish
+
+  redeploy-render:
+    name: Redeploy Render
+    runs-on: ubuntu-latest
+    needs: deploy-pages
+
+    steps:
+      - name: Trigger Render deploy hook
+        env:
+          RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$RENDER_DEPLOY_HOOK_URL" ]; then
+            echo "::error::Missing repository secret RENDER_DEPLOY_HOOK_URL"
+            exit 1
+          fi
+
+          curl --fail --silent --show-error --request POST "$RENDER_DEPLOY_HOOK_URL"
