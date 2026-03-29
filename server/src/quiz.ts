@@ -206,7 +206,7 @@ export const QUESTIONS: QuizQuestion[] = [
     id: "m7",
     segmentId: "indian-movies",
     title: "Bunny to Brahmastra",
-    prompt: "This movie is definitely in top 5 movies list of almost every 2010s kid, it introduced us to a character which inspired literally almost all of us to travel and explore the world. The director of this movie also directed one of the most expensive and VFX heavy movies in India around the early 2020s. This movie became profitable only after selling its rights and everything. On box office it wasn’t able to recover its budget and got mixed reviews",
+    prompt: "This movie is definitely in top 5 movies list of almost every 2010s kid, it introduced us to a character which inspired literally almost all of us to travel and explore the world. The director of this movie also directed one of the most expensive and VFX heavy movies in India around the early 2020s. This movie became profitable only after selling its rights and everything. On box office it wasn’t able to recover its budget and got mixed reviews.Tell the name of this director.",
     image: "",
     hint: "👀🐰, 🔥🔱",
     answer: "AYAN MUKERJI"
@@ -522,7 +522,7 @@ Investigators confirmed that exactly one of them entered the control room betwee
 - Aarav\n
 - Sofia\n
 - Lukas\n
-- Mei\n
+- Meina\n
 - Daniel\n
 \n
 Each person had:\n
@@ -563,7 +563,7 @@ No two people share the same item, location, motive, or time.\n
 
 **Investigator Notes**\n
 1. The person seen at 9:00 PM had come from the Archive Room.\n
-2. Mei was seen later than Lukas.\n
+2. Meina was seen later than Lukas.\n
 3. The Flash Drive carrier appeared immediately before the person from Equipment Storage.\n
 4. The Notebook owner had requested the internship recommendation.\n
 5. The person from the Telescope Dome appeared sometime after Aarav.\n
@@ -586,7 +586,7 @@ _The person carrying the Flash Drive must have entered the control room before l
 **Who is the murderer?**`,
     image: "",
     hint: "No hints in the Logic segment.",
-    answer: "MEI"
+    answer: "MEINA"
   }),
   q({
     id: "l7",
