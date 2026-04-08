@@ -4,7 +4,7 @@ Dark, techy, competition-style interactive quiz with an admin dashboard.
 
 ## What you get
 
-- Player flow: email → mission brief → 4 locked segments (5 questions each) → timer + hint penalties → early submit option
+-  Player flow: email → mission brief → 4 locked segments (5 questions each) → timer + hint penalties → early submit option
 - Admin flow: operator email → password → dashboard showing who logged in, time (incl. penalties), solved count
 - UI: dark “hacker/tech” vibe, floating rules tab, fixed stopwatch top-right, submit button bottom-right
 
